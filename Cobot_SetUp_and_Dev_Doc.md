@@ -43,8 +43,6 @@ myStudio is a "one-stop application platform for myRobot/myCobot and other robot
 
 _Note to Self: determine if the CP34X driver will run on its own. Had to install both before I got it to work. - Haley_
 
-_Note to Self: got it running with no drivers when using C#?? - Haley_
-
 * Make sure the miniRobot firmware running on Basic (the base of the cobot) is up-to-date
     * Flash the newest release via myStudio
 * On the Basic (the computer at the base of the cobot), navigate to the "Transponder" screen. 
@@ -165,6 +163,7 @@ print(angles)
 ### C#
 
 * Recommends using VSCode 2019
+    * _Got it running in Visual Studio 2022 with no drivers - Haley_
 * [Source Code](https://github.com/elephantrobotics/Mycobot.csharp)
 * [Dynamic Library](https://docs.elephantrobotics.com/docs/gitbook-en/9-ApplicationBaseCSharp/9.2-build.html)
 * [Recommended Steps for Running in Windows](https://docs.elephantrobotics.com/docs/gitbook-en/9-ApplicationBaseCSharp/9.2-build.html#922-running-in-windows)
