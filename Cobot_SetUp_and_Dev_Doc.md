@@ -43,12 +43,14 @@ myStudio is a "one-stop application platform for myRobot/myCobot and other robot
 
 _Note to Self: determine if the CP34X driver will run on its own. Had to install both before I got it to work. - Haley_
 
+_Note to Self: got it running with no drivers when using C#?? - Haley_
+
 * Make sure the miniRobot firmware running on Basic (the base of the cobot) is up-to-date
     * Flash the newest release via myStudio
 * On the Basic (the computer at the base of the cobot), navigate to the "Transponder" screen. 
 * You are now ready to run your desired program.
 
-#### Running on Bluetooth
+#### Running on Bluetooth:
 
 myCobot BLE <- bluetooth server
 
@@ -163,16 +165,47 @@ print(angles)
 ### C#
 
 * Recommends using VSCode 2019
-    * _Got it running in Visual Studio 2022 with no drivers - Haley_
 * [Source Code](https://github.com/elephantrobotics/Mycobot.csharp)
 * [Dynamic Library](https://docs.elephantrobotics.com/docs/gitbook-en/9-ApplicationBaseCSharp/9.2-build.html)
-* [Recommended Steps for Running in Windows](https://docs.elephantrobotics.com/docs/gitbook-en/9-ApplicationBaseCSharp/9.2-build.html#922-running-in-windows)
 
-#### Working with Unity
+
+
+Tested with the Following Environment:
+* Visual Studio 2022
+* .NET SDK 5.0.409
+* .NET SDK 6.0.301
+
+#### [Recommended Steps for Set-Up](https://docs.elephantrobotics.com/docs/gitbook-en/9-ApplicationBaseCSharp/9.2-build.html#922-running-in-windows)
+
+1. Setup Your C# Environment
+    * Download and install the [.NET core](https://dotnet.microsoft.com/en-us/download) and [.NET framework](https://dotnet.microsoft.com/en-us/download/dotnet-framework) from Microsoft.
+    * *Skip this step if you already have C# installed or have installed C# through Unity on your device.*
+    * Elephant Robotics also provides these libraries as a part of their [latest release](https://github.com/elephantrobotics/Mycobot.csharp/releases/tag/v1.2). *See the notes below before downloading.*
+        * For Windows Users: 
+            * Download `net.core.zip` and `net.framework.zip`
+        * For Linux Users: 
+            * Download `MyCobot.csharp.tar.gz`
+2. Download the Source Code from GitHub
+    * The source code includes the API for running the cobot (`MyCobot.cs`) and a sample code for first-time use (`Program.cs`).
+3. Open the Source Code and Open the Solution on VSCode or Visual Studio. 
+4. Change the port number of the cobot in `Program.cs` to match the port number of your cobot.
+    * For Windows Users:
+        * Use the [Device Manager](https://help.fleetmon.com/en/articles/2010900-how-do-i-get-my-com-port-number-windows) to identify the Cobot's port number. 
+    * For Linux Users: 
+        * Elephant Robotics expects the cobot's port number to be `/dev/ttyAMA0`.
+5. Run the project.
+
+#### Running on a Raspberry Pi
+
+* Follow the steps to setup a C# enviornment above, if you haven't already.
+* The main difference in set-up and use is the port number of the cobot. On Raspberry Pi, Elephant Robotics expects the cobot's port number to be:
+    * `/dev/ttyAMA0`
+
+#### Working with Unity:
 - Player API compatibility level must be changed to either ".NET framework" or ".NET 2.0" to recognize System.IO.Ports. 
     - System.IO.Ports is what Elephant Robotics use to open the serial port
     - https://forum.unity.com/threads/cant-use-system-io-ports.141316/
-- Import the MyCobot.cs script from the github release (source code above).
+- Import the `MyCobot.cs` script from the GitHub source code.
 - Add two dependencies to your script:
     - To use the cobot: `using Mycobot.csharp`
     - To sleep: `using System.Threading`
@@ -192,7 +225,7 @@ Researching Solutions
     - This doesnt happen in Python.
     - Is there a way to turn this off?
     - Looked in the [Microsoft Doc](https://docs.microsoft.com/en-us/dotnet/api/system.io.ports.serialport?view=dotnet-plat-ext-6.0) and the reboot signal doesnt seem to be coming from here
-
+- The .NET libraries provided with Elephant Robotics' [latest release](https://github.com/elephantrobotics/Mycobot.csharp/releases/tag/v1.2) were oddly unnecessary to run the Cobot on C# alone. More testing is needed to prove this.
 
 
 ---
