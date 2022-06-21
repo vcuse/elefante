@@ -39,12 +39,8 @@ myStudio is a "one-stop application platform for myRobot/myCobot and other robot
 
 
 #### Steps to Run a Program:
-* Make sure you have all drivers installed onto your computer 
-
-_Note to Self: determine if the CP34X driver will run on its own. Had to install both before I got it to work. - Haley_
-
-_Note to Self: got it running with no drivers when using C#?? - Haley_
-
+* Make sure you have all drivers installed onto your computer.
+    * _ May not be necessary. Both Python and C# can be run on the cobot without having drivers installed. - Haley_
 * Make sure the miniRobot firmware running on Basic (the base of the cobot) is up-to-date
     * Flash the newest release via myStudio
 * On the Basic (the computer at the base of the cobot), navigate to the "Transponder" screen. 
@@ -58,8 +54,8 @@ myCobot BLE <- bluetooth server
 
 ### [myBlockly](https://docs.elephantrobotics.com/docs/gitbook-en/5-ProgramingApplication-myblockly-uiflow-mind/5.1-myblockly/)
 myBlockly is a "Puzzle programming [drag-and-drop/block-based programming] software based on python enviornments and pymycobot dependent libraries."
-* Requires a completely setup python enviornment
-* Also generates python script based on blockly code
+* Requires a completely setup Python enviornment
+* Also generates Python script based on blockly code
 
 #### Downloads 
 - [Official Download from Elephant Robotics](https://www.elephantrobotics.com/en/downloads/)
@@ -194,7 +190,7 @@ Tested with the Following Environment:
         * Elephant Robotics expects the cobot's port number to be `/dev/ttyAMA0`.
 5. Run the project.
 
-Example Use of Angles:
+Example Use of Coordinates and Angles:
 ```C#
 using System;
 using System.Threading;
@@ -206,7 +202,7 @@ namespace Mycobot.csharp
         static void Main(string[] args)
         {
             MyCobot mc = new MyCobot("COM3");
-            //Raspberry Pi robotic arm serial port name: / dev / ttyAMA0
+            //Raspberry Pi robotic arm serial port name: /dev/ttyAMA0
             
             mc.Open();
 
@@ -226,7 +222,7 @@ namespace Mycobot.csharp
             int[] angles = new[] {0, 0, 0, 0, 0, 0};
             mc.SendAngles(angles, 80);
             var recv = mc.GetAngles();
-            Console.WriteLine(recv.Length); //This is currently 0. 
+            Console.WriteLine(recv.Length);
             foreach (var v in recv)
             {
                Console.WriteLine(v);
