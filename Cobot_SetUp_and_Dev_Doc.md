@@ -196,7 +196,46 @@ Tested with the Following Environment:
 
 Example Use of Angles:
 ```C#
+using System;
+using System.Threading;
 
+namespace Mycobot.csharp
+{
+    class Test
+    {
+        static void Main(string[] args)
+        {
+            MyCobot mc = new MyCobot("COM3");
+            //Raspberry Pi robotic arm serial port name: / dev / ttyAMA0
+            
+            mc.Open();
+
+            //After Windows opens the serial port, you need to wait for 5s.
+            //After Windows opens the serial port, the basic at the bottom will restart.
+            Thread.Sleep(5000);
+
+            int[] coords = new[] {0, 0, 0, 0, 0, 0};
+            mc.SendCoords(coords, 80, 1);
+            Thread.Sleep(5000);
+            var recv = mc.GetCoords();
+            foreach (var v in recv)
+            {
+                Console.WriteLine(v);
+            }
+            
+            int[] angles = new[] {0, 0, 0, 0, 0, 0};
+            mc.SendAngles(angles, 80);
+            var recv = mc.GetAngles();
+            Console.WriteLine(recv.Length); //This is currently 0. 
+            foreach (var v in recv)
+            {
+               Console.WriteLine(v);
+            }
+
+            mc.Close();
+        }
+    }
+}
 ```
 
 #### Running on a Raspberry Pi
