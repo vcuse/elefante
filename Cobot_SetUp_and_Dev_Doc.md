@@ -122,7 +122,7 @@ Example Library Use in Python:
 from pymycobot import MyCobot, Angle, Coord, utils
 ```
 
-Example Use of Coordinates and Joing Angles: Cobot Sits and Stands Up Again
+Example Use of Coordinates and Joing Angles: The Cobot Sits and Stands Up Again
 ```python
 from pymycobot.mycobot import MyCobot
 import time
@@ -169,7 +169,6 @@ print(angles)
 * [Dynamic Library](https://docs.elephantrobotics.com/docs/gitbook-en/9-ApplicationBaseCSharp/9.2-build.html)
 
 
-
 Tested with the Following Environment:
 * Visual Studio 2022
 * .NET SDK 5.0.409
@@ -194,6 +193,11 @@ Tested with the Following Environment:
     * For Linux Users: 
         * Elephant Robotics expects the cobot's port number to be `/dev/ttyAMA0`.
 5. Run the project.
+
+Example Use of Angles:
+```C#
+
+```
 
 #### Running on a Raspberry Pi
 
