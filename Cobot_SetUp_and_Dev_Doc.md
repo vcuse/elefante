@@ -213,17 +213,17 @@ namespace Mycobot.csharp
             int[] coords = new[] {0, 0, 0, 0, 0, 0};
             mc.SendCoords(coords, 80, 1);
             Thread.Sleep(5000);
-            var recv = mc.GetCoords();
-            foreach (var v in recv)
+            var recCoords = mc.GetCoords();
+            foreach (var v in recCoords)
             {
                 Console.WriteLine(v);
             }
-            
+
+
             int[] angles = new[] {0, 0, 0, 0, 0, 0};
             mc.SendAngles(angles, 80);
-            var recv = mc.GetAngles();
-            Console.WriteLine(recv.Length);
-            foreach (var v in recv)
+            var recAngles = mc.GetAngles();
+            foreach (var v in recAngles)
             {
                Console.WriteLine(v);
             }
