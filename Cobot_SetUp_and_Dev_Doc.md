@@ -38,7 +38,7 @@ myStudio is a "one-stop application platform for myRobot/myCobot and other robot
 - [Official Download from Elephant Robotics](https://www.elephantrobotics.com/en/downloads/)
 
 
-Steps to Run a Program:
+#### Steps to Run a Program:
 * Make sure you have all drivers installed onto your computer 
 
 _Note to Self: determine if the CP34X driver will run on its own. Had to install both before I got it to work. - Haley_
@@ -49,6 +49,8 @@ _Note to Self: got it running with no drivers when using C#?? - Haley_
     * Flash the newest release via myStudio
 * On the Basic (the computer at the base of the cobot), navigate to the "Transponder" screen. 
 * You are now ready to run your desired program.
+
+#### Running on Bluetooth
 
 myCobot BLE <- bluetooth server
 
