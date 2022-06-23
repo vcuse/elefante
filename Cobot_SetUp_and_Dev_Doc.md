@@ -40,7 +40,7 @@ myStudio is a "one-stop application platform for myRobot/myCobot and other robot
 
 #### Steps to Run a Program:
 * Make sure you have all drivers installed onto your computer.
-    * _ May not be necessary. Both Python and C# can be run on the cobot without having drivers installed. - Haley_
+    * _ May not be necessary. Both Python and C# can be run on the cobot without having drivers installed on Windows. - Haley _
 * Make sure the miniRobot firmware running on Basic (the base of the cobot) is up-to-date
     * Flash the newest release via myStudio
 * On the Basic (the computer at the base of the cobot), navigate to the "Transponder" screen. 
