@@ -4,10 +4,7 @@
 
 ## About
 
-Each Joint's Rotational Degrees of Movement: -160 deg. to 160 deg. or -165 deg to 165 deg
-- Rotational Limit on Python: 190 deg or -190 deg
-
-
+(TBA)
 
 ## Official Documentation
 - [Documentation](https://docs.elephantrobotics.com/docs/gitbook-en/)
@@ -60,6 +57,27 @@ Despite the documentation containing [instructions on how to connect to the cobo
 #### Running on Bluetooth:
 
 myCobot BLE <- bluetooth server
+
+## Rotational Movement
+
+Elephant Robotics Documentation: Each Joint's Rotational Degrees of Movement: -160 deg. to 160 deg. or -165 deg to 165 deg
+
+In Python:
+- Rotational Limit on Angles: 190 deg or -190 deg
+    - 190 degrees = 180 degrees
+    - -190 degrees = -180 degrees
+- Negative angles sent rotate the cobot clockwise.
+- Positive angles sent rotate the clock counter-clockwise.
+- Positive and negative rotational positions are split down the origin. 
+    - 0 degrees to 179 degrees
+    - -179 degrees to 0 degrees
+- Unfortunately, the cobot is not aware of its current rotational position. 
+    - Rotational movement is locked to the positive range of rotational movement.
+    - When the user attempts to rotate the cobot into a negative rotational position (-90 degrees, for example), the cobot attempts to reach that position by rotating counter-clockwise.
+    - On Joints 1 and 5, there is a block restricting the servos movement at -3 degrees. Once this block is hit, the joint will stop movement.
+    - Joints 2, 3, and 4 are restricted by other joints. 
+    - There is no block or restrictions on joint 6.
+
 
 ## Development Languages
 
