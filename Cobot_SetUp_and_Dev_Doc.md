@@ -39,28 +39,34 @@ myStudio is a "one-stop application platform for myRobot/myCobot and other robot
 * Contains robot tutorials on use, maintenance, and repair
 
 #### Downloads:
-- [Official Download from Elephant Robotics](https://www.elephantrobotics.com/en/downloads/)
+- [Download from GitHub](https://github.com/elephantrobotics/myStudio)
+    - [Latest Release](https://github.com/elephantrobotics/myStudio/releases/)
 
-
-#### Controlling the Cobot Arm via TCP/IP
-
-Despite the documentation containing [instructions on how to connect to the cobot wirelessly via TCP/IP](https://docs.elephantrobotics.com/docs/gitbook-en/7-ApplicationBasePython/7.6_TCPIP.html), the option to do so does not exist on BASIC v1.0. 
 
 #### Steps to Run a Program:
-* Make sure you have all drivers installed onto your computer.
+1. Make sure you have all drivers installed onto your computer.
     * _May not be necessary. Both Python and C# can be run on the cobot without having drivers installed on Windows. - Haley_
-* Make sure the miniRobot firmware running on Basic (the base of the cobot) is up-to-date
+2. Make sure the miniRobot firmware running on Basic (the base of the cobot) is up-to-date
     * Flash the newest release via myStudio
-* On the Basic (the computer at the base of the cobot), navigate to the "Transponder" screen. 
-* You are now ready to run your desired program.
+    * Newest release: **miniRobot v2.0**
+3. On the Basic (the computer at the base of the cobot), navigate to the "Transponder" screen. 
 
-#### Running on Bluetooth:
+##### Connecting to the Cobot via Serial Port
+
+##### Controlling the Cobot Arm via TCP/IP
+
+[Instructions on how to connect to the cobot wirelessly via TCP/IP](https://docs.elephantrobotics.com/docs/gitbook-en/7-ApplicationBasePython/7.6_TCPIP.html)
+
+##### Running on Bluetooth:
 
 myCobot BLE <- bluetooth server
+
 
 ## Rotational Movement
 
 Elephant Robotics Documentation: Each Joint's Rotational Degrees of Movement: -160 deg. to 160 deg. or -165 deg to 165 deg
+
+_TODO: Retest these findings on new miniRobot version and C#. - Haley_
 
 In Python:
 - Rotational Limit on Angles: 190 deg or -190 deg
@@ -72,12 +78,19 @@ In Python:
     - 0 degrees to 179 degrees
     - -179 degrees to 0 degrees
 - Unfortunately, the cobot is not aware of its current rotational position. 
-    - Rotational movement is locked to the positive range of rotational movement.
-    - When the user attempts to rotate the cobot into a negative rotational position (-90 degrees, for example), the cobot attempts to reach that position by rotating counter-clockwise.
     - On Joints 1 and 5, there is a block restricting the servos movement at -3 degrees. Once this block is hit, the joint will stop movement.
+    - On Joint 1:
+        - Rotational movement is locked to the positive range of rotational movement.
+        - When the user attempts to rotate the cobot into a negative rotational position (-90 degrees, for example), the cobot attempts to reach that position by rotating counter-clockwise.
     - Joints 2, 3, and 4 are restricted by other joints. 
-    - There is no block or restrictions on joint 6.
+        - Joint 2's rotational limits: -140 degrees to 140 degrees
+        - Joint 3's rotational limits: -160 degrees to 160 degrees
+        - Joint 4's rotational limits: -165 degrees to 150 degrees (weird)
+    - Joint 5
+        - (testing)
+    - There is no block nor are there restrictions on joint 6.
 
+## Coordinate Movements
 
 ## Development Languages
 
@@ -136,7 +149,7 @@ UIFlow is a "programming tool specifically designed for the M5 hardware system u
 
 #### Downloads:
 - [pymycobot Github](https://github.com/elephantrobotics/pymycobot)
-
+    - [Latest Release](https://github.com/elephantrobotics/pymycobot/releases/)
 
 #### Documentation
  * [`pymycobot` library documentation from Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/7-ApplicationBasePython/)
@@ -186,6 +199,7 @@ mc.power_off()
 ```
 
 #### Notes:
+- Tested on **pymycobot v2.7.5**
 - The Python API is not complete.
 - While `mc.power_on()` Servos will lock but be manuverable after every movement command.
     - Servos can be manually unlocked via `mc.release_all_servos()`
@@ -209,6 +223,7 @@ Tested with the Following Environment:
 * Visual Studio 2022
 * .NET SDK 5.0.409
 * .NET SDK 6.0.301
+* [Mycobot.csharp v1.2](https://github.com/elephantrobotics/Mycobot.csharp/releases)
 
 #### [Recommended Steps for Set-Up](https://docs.elephantrobotics.com/docs/gitbook-en/9-ApplicationBaseCSharp/9.2-build.html#922-running-in-windows)
 
