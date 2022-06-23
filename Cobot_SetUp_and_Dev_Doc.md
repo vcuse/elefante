@@ -2,7 +2,14 @@
 
 [ER myCobot 280 M5](https://www.elephantrobotics.com/en/mycobot-en/)
 
-## Documentation
+## About
+
+Each Joint's Rotational Degrees of Movement: -160 deg. to 160 deg. or -165 deg to 165 deg
+- Rotational Limit on Python: 190 deg or -190 deg
+
+
+
+## Official Documentation
 - [Documentation](https://docs.elephantrobotics.com/docs/gitbook-en/)
     - [Cobot Hardware Setup for First Time Use](https://docs.elephantrobotics.com/docs/gitbook-en/4-BasicApplication/4.3-quick_start.html)
 - [Video Tutorials](https://www.elephantrobotics.com/en/support-280-m5-en/)
@@ -38,9 +45,13 @@ myStudio is a "one-stop application platform for myRobot/myCobot and other robot
 - [Official Download from Elephant Robotics](https://www.elephantrobotics.com/en/downloads/)
 
 
+#### Controlling the Cobot Arm via TCP/IP
+
+Despite the documentation containing [instructions on how to connect to the cobot wirelessly via TCP/IP](https://docs.elephantrobotics.com/docs/gitbook-en/7-ApplicationBasePython/7.6_TCPIP.html), the option to do so does not exist on BASIC v1.0. 
+
 #### Steps to Run a Program:
 * Make sure you have all drivers installed onto your computer.
-    * _ May not be necessary. Both Python and C# can be run on the cobot without having drivers installed on Windows. - Haley _
+    * _May not be necessary. Both Python and C# can be run on the cobot without having drivers installed on Windows. - Haley_
 * Make sure the miniRobot firmware running on Basic (the base of the cobot) is up-to-date
     * Flash the newest release via myStudio
 * On the Basic (the computer at the base of the cobot), navigate to the "Transponder" screen. 
@@ -125,6 +136,10 @@ import time
 
 mc = MyCobot('COM3', 115200)
 mc.power_on()
+
+#For the best results, wait for 5s after opening the serial port.
+time.sleep(5)
+
 print("cobot is now active")
 
 print("moving bot via coordinates")
@@ -148,13 +163,20 @@ time.sleep(5)
 
 angles = mc.get_angles()
 print(angles)
+
+mc.power_off()
 ```
 
 #### Notes:
 - The Python API is not complete.
-- Servos will lock but be manuverable after every movement command.
+- While `mc.power_on()` Servos will lock but be manuverable after every movement command.
     - Servos can be manually unlocked via `mc.release_all_servos()`
     - Servos will move back to its original position in this state
+- Servos become fully manuverable again after the `mc.power_off()` is run.
+
+For Best Results:
+- Wait 5 seconds for the cobot to connect to the serial port.
+- Wait 5 seconds after sending angles and coordinates.
 
 ---
 
@@ -174,7 +196,7 @@ Tested with the Following Environment:
 
 1. Setup Your C# Environment
     * Download and install the [.NET core](https://dotnet.microsoft.com/en-us/download) and [.NET framework](https://dotnet.microsoft.com/en-us/download/dotnet-framework) from Microsoft.
-    * *Skip this step if you already have C# installed or have installed C# through Unity on your device.*
+        * *Skip this step if you already have C# installed or have installed C# through Unity on your device.*
     * Elephant Robotics also provides these libraries as a part of their [latest release](https://github.com/elephantrobotics/Mycobot.csharp/releases/tag/v1.2). *See the notes below before downloading.*
         * For Windows Users: 
             * Download `net.core.zip` and `net.framework.zip`
@@ -207,7 +229,7 @@ namespace Mycobot.csharp
             mc.Open();
 
             //After Windows opens the serial port, you need to wait for 5s.
-            //After Windows opens the serial port, the basic at the bottom will restart.
+            //After Windows opens the serial port, the BASIC at the bottom will restart.
             Thread.Sleep(5000);
 
             int[] coords = new[] {0, 0, 0, 0, 0, 0};
