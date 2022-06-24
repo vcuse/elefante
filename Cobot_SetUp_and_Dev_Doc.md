@@ -148,12 +148,14 @@ UIFlow is a "programming tool specifically designed for the M5 hardware system u
 * [Installing the `pymycobot` library](https://docs.elephantrobotics.com/docs/gitbook-en/7-ApplicationBasePython/7.1_download.html#714-preparations)
 
 #### Downloads:
-- [pymycobot Github](https://github.com/elephantrobotics/pymycobot)
+- [`pymycobot` Github](https://github.com/elephantrobotics/pymycobot)
     - [Latest Release](https://github.com/elephantrobotics/pymycobot/releases/)
+    - Use `pip` or `pip3` to install `pymycobot` to your enviornment.
 
 #### Documentation
  * [`pymycobot` library documentation from Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/7-ApplicationBasePython/)
  * [Python API for myCobot](https://pypi.org/project/pymycobot/)
+ * [`pymycobot` GitHub ReadMe](https://github.com/elephantrobotics/pymycobot/blob/main/README.md)
 
 Example Library Use in Python:
 ```python
