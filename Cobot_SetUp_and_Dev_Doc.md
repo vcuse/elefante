@@ -75,9 +75,9 @@ In Python:
 - Negative angles sent rotate the cobot clockwise.
 - Positive angles sent rotate the clock counter-clockwise.
 - Positive and negative rotational positions are split down the origin. 
-    - 0 degrees to 179 degrees
-    - -179 degrees to 0 degrees
-- Unfortunately, the cobot is not aware of its current rotational position. 
+    - From 0 degrees to 179 degrees; then, from -179 degrees back to 0 degrees
+- Unfortunately, the cobot is not aware of its current rotational position.
+    - _Currently testing this section. - Haley_
     - On Joints 1 and 5, there is a block restricting the servos movement at -3 degrees. Once this block is hit, the joint will stop movement.
     - On Joint 1:
         - Rotational movement is locked to the positive range of rotational movement.
@@ -333,29 +333,31 @@ Researching Solutions
 
 #### Setting Up ROS and myCobot:
 1. Build your ROS Enviornment 
-    * [ROS Enviornment Building Instructions by Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html#1-ros-environment-building)
-        * All ROS versions are supported
+    * [ROS Enviornment Building Instructions by Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.1-ROS1/12.1.2-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html#12122-environment-installation)
+        * ROS versions supported:
             - Ubuntu 16.04 / ROS Kinetic
             - Ubuntu 18.04 / ROS Melodic
             - Ubuntu 20.04 / ROS Noetic
-        * ROS2
-            - Ubuntu 20.04 / ROS Foxy
     * [Instructions from ROS Wiki](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment)
 2. Install the MoveIt function packages
-    * [Instructions from Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html#1-ros-environment-building)
+    * [Instructions from Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.1-ROS1/12.1.2-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html#11-installing-ros)
     * [Install/Build Instructions from ROS](https://moveit.ros.org/install/)
 3. Create a ROS workspace
-    * [Instructions from Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html#21-precondition)
-4. Install `mycobot_ros`
-    * [GitHub Repository](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html#2-mycobotros-installation)
-    * [Installing the Package](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html#22-installing-the-package)
-        - Recommends using `pip`
+    * [ROS Workspace Instructions from Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html#21-precondition)
+4. Download `mycobot_ros`
+    * [`mycobot_ros` on GitHub](https://github.com/elephantrobotics/mycobot_ros)
 
 #### 3D Visualization using `rviz`
 
+[Official ROS Documentation on `rviz`](http://wiki.ros.org/rviz)
+
 * Installing `rviz`
-    * [Instructions from Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.4-rivz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/)
-    * [Official ROS Documentation](http://wiki.ros.org/rviz)
+    * On ROS:
+        * [Instructions from Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.1-ROS1/12.1.4-rivz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/)
+        * [GitHub Repository](https://github.com/ros-visualization/rviz)
+    * On ROS2:
+        * [Instructions from Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.7-rivz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/)
+        * [GitHub Repository](https://github.com/ros2/rviz)
 
 Configure your ROS enviornment and run the following to test the visualization for myCobot 280-M5:
 ```
@@ -373,7 +375,31 @@ roslaunch src/mycobot_ros/mycobot_280/launch/test.launch
 
 ---
 
-**M5 Series Precondition for Use:** \
-    "M5 series version the bottom Basic is programmed to miniRobot , select the Transponder function, and the end ATOM is programmed to the latest version of atomMain (the factory default has been programmed)"
+### [ROS2]()
 
-_Not sure what they are trying to say here. - Haley_
+* Install Firmware using [myStudio](https://docs.elephantrobotics.com/docs/gitbook-en/4-BasicApplication/4.1-myStudio/)
+* Only need to build a ROS enviornment for the MyCobot 280-M5
+
+[ROS Wiki](http://wiki.ros.org/Documentation)
+
+#### Setting Up ROS and myCobot:
+1. Build your ROS Enviornment 
+    * [ROS Enviornment Building Instructions by Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.1-ROS2%E7%9A%84%E5%AE%89%E8%A3%85.html)
+        * ROS2 Versions Supported: 
+            - Ubuntu 20.04 / ROS Foxy
+    * [Instructions from ROS Wiki](https://docs.ros.org/en/foxy/index.html)
+2. Install the MoveIt function packages
+    * [Instructions from Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.6-moveit2%E7%9A%84%E5%AE%89%E8%A3%85.html)
+    * [Install/Build Instructions from ROS](https://github.com/ros-planning/moveit2)
+3. Create a ROS workspace
+    * [Workspace Instructions from Elephant Robotics](https://github.com/elephantrobotics/mycobot_ros2/blob/humble/README.md)
+4. Download `mycobot_ros2`
+    * [`mycobot_ros2` on GitHub](https://github.com/elephantrobotics/mycobot_ros2)
+
+#### 3D Visualization using `rviz`
+
+[Official ROS Documentation on `rviz`](http://wiki.ros.org/rviz)
+
+* Installing `rviz`
+    * [Instructions from Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.7-rivz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/)
+    * [GitHub Repository](https://github.com/ros2/rviz)
