@@ -10,6 +10,7 @@
 - [Documentation](https://docs.elephantrobotics.com/docs/gitbook-en/)
     - [Cobot Hardware Setup for First Time Use](https://docs.elephantrobotics.com/docs/gitbook-en/4-BasicApplication/4.3-quick_start.html)
 - [Video Tutorials](https://www.elephantrobotics.com/en/support-280-m5-en/)
+- [User Manual](https://www.elephantrobotics.com/wp-content/uploads/2021/03/myCobot-User-Mannul-EN-V20210318.pdf)
 
 ## Basic Drivers and myStudio
 
@@ -24,7 +25,7 @@ Basic Driver for myCobot 280 M5: CP210x
 - [Linux](https://www.elephantrobotics.com/software/drivers/CP210x_VCP_Linux.zip)
 - [MacOS](https://www.elephantrobotics.com/software/drivers/CP210x_VCP_MacOS.zip)
 
-New Basic Driver for myCobot 280 M5: **CH9102** CP34X
+New Basic Driver for myCobot 280 M5: CH9102
 - [Windows 10](https://download.elephantrobotics.com/software/drivers/CH9102_VCP_CDC_Windows.exe)
 - [Windows Server](https://download.elephantrobotics.com/software/drivers/CH9102_VCP_SER_Windows.exe)
 - [MaxOS](https://download.elephantrobotics.com/software/drivers/CH9102_VCP_MacOS.dmg)
@@ -63,13 +64,24 @@ myStudio is a "one-stop application platform for myRobot/myCobot and other robot
 
 ##### Running on Bluetooth:
 
+Using the `myCobot BLE` server:
 1. Flash the myCobot bluetooth server, `myCobot BLE`, to your cobot's BASIC using myStudio.
 2. On your bluetooth-enabled controller (your computer, mobile device, etc.), activate bluetooth and pair the device to the cobot. 
     * Your cobot will broadcast itself as `MyCobot`.
 
+Using `miniRobot v2.0`:
+1. On the "Transponder" screen, select "Bluetooth". 
+2. The cobot is now broadcasting itself on Bluetooth. 
+    * The cobot will broadcast itself as `mycobot280-m5`.
+3. On your controller device, activate bluetooth and request to pair with the cobot. 
+4. Verify that the bluetooth code displayed on your controller device is the same as the one displayed on the cobot's LCD.
+    * Once you have confirmed that they are the same, select the `pair` or `confirm` option on both devices.
+
 [myCobot Phone Controller App](https://github.com/elephantrobotics/myCobot/tree/main/Software/phone%20controller)
 * Unfortunately, this controller is only a preview. All assets on the app work, however the app itself is unable to connect to the cobot via bluetooth - including when the phone itself is successfully connected.
 * Excellent app design. If we could get this working, that'd be neat.
+
+No more information was available on how to send instructions via Bluetooth.
 
 ## Rotational Movement
 
