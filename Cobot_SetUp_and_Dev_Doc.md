@@ -85,7 +85,7 @@ No more information was available on how to send instructions via Bluetooth.
 
 Elephant Robotics Documentation: Each Joint's Rotational Degrees of Movement: -160 deg. to 160 deg. or -165 deg to 165 deg
 
-_TODO: Retest these findings on C#. - Haley_
+_TODO: Retest these findings on new cobot. - Haley_
 
 In Python:
 - Rotational Limit on Angles: 190 deg or -190 deg
@@ -98,8 +98,12 @@ In Python:
     - On Joints 1 and 5, there is a block restricting the servos movement at 180 degrees/-180 degrees. Once this block is hit, the joint will stop movement.
     - Joints 2, 3, and 4 are restricted by other joints. 
         - Joint 2's rotational limits: -140 degrees to 140 degrees
+            - Exact Limits: -133 degrees to 145 degrees
         - Joint 3's rotational limits: -160 degrees to 160 degrees
-        - Joint 4's rotational limits: -165 degrees to 150 degrees (weird)
+            - Exact Limits: -175 degrees to 133 degrees
+        - Joint 4's rotational limits: -165 degrees to 150 degrees
+            - Exact Limits: 73 degrees to 24 degrees
+            - Standing straight up is -135 degrees
     - There is no block nor are there restrictions on joint 6.
 
 Min and Max Angles According to the Python API:
