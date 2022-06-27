@@ -44,7 +44,7 @@ myStudio is a "one-stop application platform for myRobot/myCobot and other robot
     - [Latest Release](https://github.com/elephantrobotics/myStudio/releases/)
 
 
-### Steps to Run a Program:
+## Steps to Run a Program:
 1. Make sure you have all drivers installed onto your computer.
     * _May not be necessary. Both Python and C# can be run on the cobot without having drivers installed on Windows. - Haley_
 2. Make sure the miniRobot firmware running on Basic (the base of the cobot) is up-to-date
@@ -52,17 +52,17 @@ myStudio is a "one-stop application platform for myRobot/myCobot and other robot
     * Newest release: **miniRobot v2.0**
 3. On the Basic (the computer at the base of the cobot), navigate to the "Transponder" screen. 
 
-##### Connecting to the Cobot via Serial Port
+### Connecting to the Cobot via Serial Port
 
 1. Connect the cobot to your computer using the USB-C on the left-side of the cobot's LCD.
 1. On the "Transponder" screen, select "USB UART". 
 2. The cobot is now ready to accept instructions.
 
-##### Controlling the Cobot Arm via TCP/IP
+### Controlling the Cobot Arm via TCP/IP
 
 [Instructions on how to connect to the cobot wirelessly via TCP/IP](https://docs.elephantrobotics.com/docs/gitbook-en/7-ApplicationBasePython/7.6_TCPIP.html)
 
-##### Running on Bluetooth:
+### Running on Bluetooth:
 
 Using the `myCobot BLE` server:
 1. Flash the myCobot bluetooth server, `myCobot BLE`, to your cobot's BASIC using myStudio.
@@ -129,6 +129,9 @@ Notes:
     * Adding onto this, some joints cannot move a complete 360 degrees.
 
 ## Coordinate Movements
+
+
+---
 
 ## Development Languages
 
