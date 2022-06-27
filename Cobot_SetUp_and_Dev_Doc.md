@@ -12,6 +12,10 @@
 - [Video Tutorials](https://www.elephantrobotics.com/en/support-280-m5-en/)
 - [User Manual](https://www.elephantrobotics.com/wp-content/uploads/2021/03/myCobot-User-Mannul-EN-V20210318.pdf)
 
+### LCD
+
+[M5Go Core User Manual](https://flow.m5stack.com/download/M5GO_User_Manual_en.pdf)
+
 ## Basic Drivers
 
 [Driver Diagram](https://docs.elephantrobotics.com/docs/gitbook-en/resourse/4-BasicApplication/4.1/4.1-mystudio1.jpg)
