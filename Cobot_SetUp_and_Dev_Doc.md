@@ -44,7 +44,7 @@ myStudio is a "one-stop application platform for myRobot/myCobot and other robot
     - [Latest Release](https://github.com/elephantrobotics/myStudio/releases/)
 
 
-#### Steps to Run a Program:
+### Steps to Run a Program:
 1. Make sure you have all drivers installed onto your computer.
     * _May not be necessary. Both Python and C# can be run on the cobot without having drivers installed on Windows. - Haley_
 2. Make sure the miniRobot firmware running on Basic (the base of the cobot) is up-to-date
