@@ -67,41 +67,54 @@ myStudio is a "one-stop application platform for myRobot/myCobot and other robot
 2. On your bluetooth-enabled controller (your computer, mobile device, etc.), activate bluetooth and pair the device to the cobot. 
     * Your cobot will broadcast itself as `MyCobot`.
 
-
 [myCobot Phone Controller App](https://github.com/elephantrobotics/myCobot/tree/main/Software/phone%20controller)
 * Unfortunately, this controller is only a preview. All assets on the app work, however the app itself is unable to connect to the cobot via bluetooth - including when the phone itself is successfully connected.
-* Excellent app design
-
-
-
+* Excellent app design. If we could get this working, that'd be neat.
 
 ## Rotational Movement
 
 Elephant Robotics Documentation: Each Joint's Rotational Degrees of Movement: -160 deg. to 160 deg. or -165 deg to 165 deg
 
-_TODO: Retest these findings on new miniRobot version and C#. - Haley_
+_TODO: Retest these findings on C#. - Haley_
 
 In Python:
 - Rotational Limit on Angles: 190 deg or -190 deg
     - 190 degrees = 180 degrees
     - -190 degrees = -180 degrees
-- Negative angles sent rotate the cobot clockwise.
-- Positive angles sent rotate the clock counter-clockwise.
 - Positive and negative rotational positions are split down the origin. 
     - From 0 degrees to 179 degrees; then, from -179 degrees back to 0 degrees
-- Unfortunately, the cobot is not aware of its current rotational position.
-    - _Currently testing this section. - Haley_
-    - On Joints 1 and 5, there is a block restricting the servos movement at -3 degrees. Once this block is hit, the joint will stop movement.
-    - On Joint 1:
-        - Rotational movement is locked to the positive range of rotational movement.
-        - When the user attempts to rotate the cobot into a negative rotational position (-90 degrees, for example), the cobot attempts to reach that position by rotating counter-clockwise.
+    - The notch in the joint lines up when the joint in at the origin (0 degrees).
+- Rotational Limits per joint:
+    - On Joints 1 and 5, there is a block restricting the servos movement at 180 degrees/-180 degrees. Once this block is hit, the joint will stop movement.
     - Joints 2, 3, and 4 are restricted by other joints. 
         - Joint 2's rotational limits: -140 degrees to 140 degrees
         - Joint 3's rotational limits: -160 degrees to 160 degrees
         - Joint 4's rotational limits: -165 degrees to 150 degrees (weird)
-    - Joint 5
-        - (testing)
     - There is no block nor are there restrictions on joint 6.
+
+Min and Max Angles According to the Python API:
+* Joint 1
+    * Min: -1550 degrees 
+    * Max: 1550 degrees 
+* Joint 2
+    * Min: -1650 degrees
+    * Max: 1650 degrees
+* Joint 3
+    * Min: -1650 degrees
+    * Max: 1650 degrees
+* Joint 4
+    * Min: -1650 degrees
+    * Max: 1650 degrees
+* Joint 5
+    * Min: -1750 degrees
+    * Max: 1750 degrees
+* Joint 6
+    * Min: -17500 degrees
+    * Max: 21608 degrees
+
+Notes:
+* Despite all movement commands operating in degrees between -180, 0, and 180 **or less*, the functions that return the minimum and maximum angle possible return coterminal angle values (?).
+    * Adding onto this, some joints cannot move a complete 360 degrees.
 
 ## Coordinate Movements
 
