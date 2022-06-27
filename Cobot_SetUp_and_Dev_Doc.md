@@ -4,17 +4,20 @@
 
 ## About
 
-(TBA)
+"myCobot is the world's smallest and lightest six-axis collaborative robot, jointly produced by Elephant Robotics and M5STACK. It is more than a productivity tool full of imaginations, can carry on the secondary development according to the demands of users to achieve personalized customization."
+* The robot itself was built using modular components from M5Stack
+    * [LCD (BASIC)](https://shop.m5stack.com/collections/m5-controllers/products/esp32-basic-core-iot-development-kit-v2-6)
+        * [M5Go Core User Manual](https://flow.m5stack.com/download/M5GO_User_Manual_en.pdf)
+    * [LCD (ATOM)](https://shop.m5stack.com/products/atom-matrix-esp32-development-kit?_pos=25&_sid=b13b754ab&_ss=r)
+    * [360 degree Servos](https://shop.m5stack.com/collections/m5-accessories/products/servo-kit-360)
+* The robot was assembled by Elephant Robotics.
+* Target Audience: Schools and Classrooms
 
 ## Official Documentation
 - [Documentation](https://docs.elephantrobotics.com/docs/gitbook-en/)
     - [Cobot Hardware Setup for First Time Use](https://docs.elephantrobotics.com/docs/gitbook-en/4-BasicApplication/4.3-quick_start.html)
 - [Video Tutorials](https://www.elephantrobotics.com/en/support-280-m5-en/)
 - [User Manual](https://www.elephantrobotics.com/wp-content/uploads/2021/03/myCobot-User-Mannul-EN-V20210318.pdf)
-
-### LCD
-
-[M5Go Core User Manual](https://flow.m5stack.com/download/M5GO_User_Manual_en.pdf)
 
 ## Basic Drivers
 
@@ -91,7 +94,7 @@ Elephant Robotics Documentation: Each Joint's Rotational Degrees of Movement: -1
 
 _TODO: Retest these findings on new cobot. - Haley_
 
-In Python:
+### Rotational Limits:
 - Rotational Limit on Angles: 190 deg or -190 deg
     - 190 degrees = 180 degrees
     - -190 degrees = -180 degrees
@@ -110,7 +113,7 @@ In Python:
             - Standing straight up is -135 degrees
     - There is no block nor are there restrictions on joint 6.
 
-Min and Max Angles According to the Python API:
+### Min and Max Angles According to the Python API:
 * Joint 1
     * Min: -1550 degrees 
     * Max: 1550 degrees 
@@ -130,7 +133,7 @@ Min and Max Angles According to the Python API:
     * Min: -17500 degrees
     * Max: 21608 degrees
 
-Notes:
+### Notes:
 * Despite all movement commands operating in degrees between -180, 0, and 180 **or less*, the functions that return the minimum and maximum angle possible return coterminal angle values (?).
     * Adding onto this, some joints cannot move a complete 360 degrees.
 
@@ -159,7 +162,7 @@ _Blockly code isn't running on the cobot despite the Python code running just fi
 
 ### [UIFlow](https://docs.elephantrobotics.com/docs/gitbook-en/5-ProgramingApplication-myblockly-uiflow-mind/5.2-UIFlow/)
 UIFlow is a "programming tool specifically designed for the M5 hardware system using [Blockly](https://developers.google.com/blockly) and Python code".
-- Typically used for primary/secondary schools (?) and IoT devices
+- Typically used for primary/secondary schools to be able to develop apps for the M5Core
 
 [Web-Based IDE](https://flow.m5stack.com/)
 
@@ -388,7 +391,6 @@ Researching Solutions
     - Is there a way to turn this off?
     - Looked in the [Microsoft Doc](https://docs.microsoft.com/en-us/dotnet/api/system.io.ports.serialport?view=dotnet-plat-ext-6.0) and the reboot signal doesnt seem to be coming from here
 - The .NET libraries provided with Elephant Robotics' [latest release](https://github.com/elephantrobotics/Mycobot.csharp/releases/tag/v1.2) were oddly unnecessary to run the Cobot on C# alone. More testing is needed to prove this.
-
 
 ---
 
