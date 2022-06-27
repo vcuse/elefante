@@ -12,9 +12,7 @@
 - [Video Tutorials](https://www.elephantrobotics.com/en/support-280-m5-en/)
 - [User Manual](https://www.elephantrobotics.com/wp-content/uploads/2021/03/myCobot-User-Mannul-EN-V20210318.pdf)
 
-## Basic Drivers and myStudio
-
-### Basic Drivers
+## Basic Drivers
 
 [Driver Diagram](https://docs.elephantrobotics.com/docs/gitbook-en/resourse/4-BasicApplication/4.1/4.1-mystudio1.jpg)
 
@@ -33,7 +31,7 @@ New Basic Driver for myCobot 280 M5: CH9102
 Atom Serial Port Driver:
 - [Windows 10](https://download.elephantrobotics.com/software/drivers/CDM21228_Setup.zips)
 
-### [myStudio](https://docs.elephantrobotics.com/docs/gitbook-en/4-BasicApplication/4.1-myStudio/)
+## [myStudio](https://docs.elephantrobotics.com/docs/gitbook-en/4-BasicApplication/4.1-myStudio/)
 
 myStudio is a "one-stop application platform for myRobot/myCobot and other robots."
 * Handles firmware installations and updates
