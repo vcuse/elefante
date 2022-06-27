@@ -53,13 +53,26 @@ myStudio is a "one-stop application platform for myRobot/myCobot and other robot
 
 ##### Connecting to the Cobot via Serial Port
 
+1. Connect the cobot to your computer using the USB-C on the left-side of the cobot's LCD.
+1. On the "Transponder" screen, select "USB UART". 
+2. The cobot is now ready to accept instructions.
+
 ##### Controlling the Cobot Arm via TCP/IP
 
 [Instructions on how to connect to the cobot wirelessly via TCP/IP](https://docs.elephantrobotics.com/docs/gitbook-en/7-ApplicationBasePython/7.6_TCPIP.html)
 
 ##### Running on Bluetooth:
 
-myCobot BLE <- bluetooth server
+1. Flash the myCobot bluetooth server, `myCobot BLE`, to your cobot's BASIC using myStudio.
+2. On your bluetooth-enabled controller (your computer, mobile device, etc.), activate bluetooth and pair the device to the cobot. 
+    * Your cobot will broadcast itself as `MyCobot`.
+
+
+[myCobot Phone Controller App](https://github.com/elephantrobotics/myCobot/tree/main/Software/phone%20controller)
+* Unfortunately, this controller is only a preview. All assets on the app work, however the app itself is unable to connect to the cobot via bluetooth - including when the phone itself is successfully connected.
+* Excellent app design
+
+
 
 
 ## Rotational Movement
@@ -200,17 +213,34 @@ print(angles)
 mc.power_off()
 ```
 
+Example use of rotating the joint incrementally:
+```python
+from pymycobot.mycobot import MyCobot
+import time
+
+mc = MyCobot('COM3', 115200)
+mc.power_on()
+time.sleep(5)
+
+for x in range(0, 90):
+    mc.send_angle(Angle.J1.value, x, 80)
+
+mc.power_off()
+```
+
+
 #### Notes:
 - Tested on **pymycobot v2.7.5**
-- The Python API is not complete.
+- The Python API does not completely include or describe all the available functions in the API.
 - While `mc.power_on()` Servos will lock but be manuverable after every movement command.
     - Servos can be manually unlocked via `mc.release_all_servos()`
     - Servos will move back to its original position in this state
 - Servos become fully manuverable again after the `mc.power_off()` is run.
 
 For Best Results:
-- Wait 5 seconds for the cobot to connect to the serial port.
-- Wait 5 seconds after sending angles and coordinates.
+- Wait at least 5 seconds for the cobot to connect to the serial port.
+- To move from one angle to another, we recommend instead moving in one-angle increments to the next angle until the cobot reaches its destimation.
+    - If you wish to not use this appraoch, wait 5 seconds after sending angles and coordinates across a difference of movement. 
 
 ---
 
