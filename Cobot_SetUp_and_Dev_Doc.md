@@ -21,7 +21,7 @@
 
 ## Table of Contents
 1. [myCobot Drivers](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#basic-drivers)
-2. [myStudio](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#mystudio)
+2. [myStudio and How to Download It](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#mystudio)
 3. [Steps to Run a Program](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#steps-to-run-a-program)
 4. [Details on Rotational Movement](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#rotational-movement)
 5. [Details on Coordinate-Based Movement](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#coordinate-movements)
