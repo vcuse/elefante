@@ -21,7 +21,7 @@
 
 ## Basic Drivers
 
-[Driver Diagram](https://docs.elephantrobotics.com/docs/gitbook-en/resourse/4-BasicApplication/4.1/4.1-mystudio1.jpg)
+![Driver Diagram](https://docs.elephantrobotics.com/docs/gitbook-en/resourse/4-BasicApplication/4.1/4.1-mystudio1.jpg)
 
 [How to Comform Which Basic Chip is in the Robot](https://docs.elephantrobotics.com/docs/gitbook-en/4-BasicApplication/4.1-myStudio/4.1.1-myStudio_download_driverinstalled.html#4113-how-to-distinguish-between-cp210x-chip-and-cp34x-chip)
 
@@ -106,19 +106,22 @@ _TODO: Retest these findings on new cobot. - Haley_
     - The notch in the joint lines up when the joint in at the origin (0 degrees).
 - Rotational Limits per joint:
     - On Joints 1 and 5, there is a block restricting the servos movement at 180 degrees/-180 degrees. Once this block is hit, the joint will stop movement.
-        - (Diagram of Joint Rotational Range)
+        - Joint 1:
+            ![Joint 1 Diagram](/Images/Joint 1.png)
+        - Joint 5:
+            ![Joint 5 Diagram](/Images/Joint 5.png)
     - Joints 2, 3, and 4 are restricted by other joints. 
         - Joint 2's rotational limits: -140 degrees to 140 degrees
             - Exact Limits: -133 degrees to 145 degrees
-            - (Diagram of Joint Rotational Range)
+            ![Joint 2 Diagram](/Images/Joint 2.png)
         - Joint 3's rotational limits: -160 degrees to 160 degrees
             - Exact Limits: -175 degrees to 133 degrees
-            - (Diagram of Joint Rotational Range)
+            ![Joint 1 Diagram](/Images/Joint 3/4.png)
         - Joint 4's rotational limits: -165 degrees to 150 degrees
             - Exact Limits: 73 degrees to 24 degrees (?)
-            - (Diagram of Joint Rotational Range)
+            ![Joint 1 Diagram](/Images/Joint 3/4.png)
     - There is no block nor are there restrictions on joint 6.
-        - (Diagram of Joint Rotational Range)
+        ![Joint 6 Diagram](/Images/Joint 6.png)
 
 ### Min and Max Angles According to the Python API:
 * Joint 1
