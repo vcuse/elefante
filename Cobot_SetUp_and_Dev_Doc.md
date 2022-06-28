@@ -41,9 +41,9 @@
 
 ![Driver Diagram](https://docs.elephantrobotics.com/docs/gitbook-en/resourse/4-BasicApplication/4.1/4.1-mystudio1.jpg)
 
-[How to Comform Which Basic Chip is in the Robot](https://docs.elephantrobotics.com/docs/gitbook-en/4-BasicApplication/4.1-myStudio/4.1.1-myStudio_download_driverinstalled.html#4113-how-to-distinguish-between-cp210x-chip-and-cp34x-chip)
+[How to Confirm Which Basic Chip is in the Robot](https://docs.elephantrobotics.com/docs/gitbook-en/4-BasicApplication/4.1-myStudio/4.1.1-myStudio_download_driverinstalled.html#4113-how-to-distinguish-between-cp210x-chip-and-cp34x-chip)
 
-Basic Driver for myCobot 280 M5: CP210x
+Basic Driver for myCobot 280 M5: CP210x **(Recommended)**
 - [Windows 10](https://www.elephantrobotics.com/software/drivers/CP210x_VCP_Windows.zip)
 - [Linux](https://www.elephantrobotics.com/software/drivers/CP210x_VCP_Linux.zip)
 - [MacOS](https://www.elephantrobotics.com/software/drivers/CP210x_VCP_MacOS.zip)
