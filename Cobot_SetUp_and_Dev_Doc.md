@@ -457,19 +457,13 @@ roslaunch src/mycobot_ros/mycobot_280/launch/test.launch
     * [ROS Enviornment Building Instructions by Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.1-ROS2%E7%9A%84%E5%AE%89%E8%A3%85.html)
         * ROS2 Versions Supported: 
             - Ubuntu 20.04 / ROS Foxy
-    * [Instructions from ROS Wiki](https://docs.ros.org/en/foxy/index.html)
+    * [Instructions from ROS Wiki](https://docs.ros.org/en/foxy/index.html) <- these ones
 2. Install the MoveIt function packages
     * [Instructions from Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.6-moveit2%E7%9A%84%E5%AE%89%E8%A3%85.html)
-    * [Install/Build Instructions from ROS](https://github.com/ros-planning/moveit2)
-3. Create a ROS workspace
+    * [Install/Build Instructions from ROS](https://github.com/ros-planning/moveit2) 
+3. Download and build your myCobot ROS2 workspace
     * [Workspace Instructions from Elephant Robotics](https://github.com/elephantrobotics/mycobot_ros2/blob/humble/README.md)
-4. Download `mycobot_ros2`
-    * [`mycobot_ros2` on GitHub](https://github.com/elephantrobotics/mycobot_ros2)
 
-#### 3D Visualization using `rviz`
+#### 3D Visualization and Cobot Control using `rviz`
 
-[Official ROS Documentation on `rviz`](http://wiki.ros.org/rviz)
-
-* Installing `rviz`
-    * [Instructions from Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.7-rivz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/)
-    * [GitHub Repository](https://github.com/ros2/rviz)
+https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.7-rivz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/ 
