@@ -115,7 +115,7 @@ _TODO: Retest these findings on new cobot. - Haley_
             - Exact Limits: -175 degrees to 133 degrees
             - (Diagram of Joint Rotational Range)
         - Joint 4's rotational limits: -165 degrees to 150 degrees
-            - Exact Limits: 73 degrees to 24 degrees
+            - Exact Limits: 73 degrees to 24 degrees (?)
             - (Diagram of Joint Rotational Range)
     - There is no block nor are there restrictions on joint 6.
         - (Diagram of Joint Rotational Range)
