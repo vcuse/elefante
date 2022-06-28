@@ -107,7 +107,7 @@ _TODO: Retest these findings on new cobot. - Haley_
 - Rotational Limits per joint:
     - On Joints 1 and 5, there is a block restricting the servos movement at 180 degrees/-180 degrees. Once this block is hit, the joint will stop movement.
         - Joint 1:
-            ![Joint 1 Diagram](/Images/Joint 1.jpeg)
+            ![Joint 1 Diagram](/Images/'Joint 1.jpeg')
         - Joint 5:
             ![Joint 5 Diagram](/Images/Joint 5.png)
     - Joints 2, 3, and 4 are restricted by other joints. 
