@@ -50,6 +50,7 @@ myStudio is a "one-stop application platform for myRobot/myCobot and other robot
 
 
 ## Steps to Run a Program:
+1. Download and install myStudio onto your computer.
 1. Make sure you have all drivers installed onto your computer.
     * _May not be necessary. Both Python and C# can be run on the cobot without having drivers installed on Windows. - Haley_
 2. Make sure the miniRobot firmware running on Basic (the base of the cobot) is up-to-date
@@ -82,15 +83,17 @@ Using `miniRobot v2.0`:
 4. Verify that the bluetooth code displayed on your controller device is the same as the one displayed on the cobot's LCD.
     * Once you have confirmed that they are the same, select the `pair` or `confirm` option on both devices.
 
-[myCobot Phone Controller App](https://github.com/elephantrobotics/myCobot/tree/main/Software/phone%20controller)
+#### [myCobot Phone Controller App](https://github.com/elephantrobotics/myCobot/tree/main/Software/phone%20controller)
 * Unfortunately, this controller is only a preview. All assets on the app work, however the app itself is unable to connect to the cobot via bluetooth - including when the phone itself is successfully connected.
 * Excellent app design. If we could get this working, that'd be neat.
 
-No more information was available on how to send instructions via Bluetooth.
+_No more information was available on how to send instructions via Bluetooth. - Haley_
 
 ## Rotational Movement
 
-Elephant Robotics Documentation: Each Joint's Rotational Degrees of Movement: -160 deg. to 160 deg. or -165 deg to 165 deg
+The myCobot 280 M5 has 6 joints, labeled 1 through 6, that control the robots movement via the use of 360 degree servos.
+
+According to Elephant Robotics Documentation, each joint's range of rotational degrees of movement is as follows: -160 deg. to 160 deg. or -165 deg to 165 deg; however, see the findings below for the true limits and rotational descriptions for each joint.
 
 _TODO: Retest these findings on new cobot. - Haley_
 
@@ -103,15 +106,19 @@ _TODO: Retest these findings on new cobot. - Haley_
     - The notch in the joint lines up when the joint in at the origin (0 degrees).
 - Rotational Limits per joint:
     - On Joints 1 and 5, there is a block restricting the servos movement at 180 degrees/-180 degrees. Once this block is hit, the joint will stop movement.
+        - (Diagram of Joint Rotational Range)
     - Joints 2, 3, and 4 are restricted by other joints. 
         - Joint 2's rotational limits: -140 degrees to 140 degrees
             - Exact Limits: -133 degrees to 145 degrees
+            - (Diagram of Joint Rotational Range)
         - Joint 3's rotational limits: -160 degrees to 160 degrees
             - Exact Limits: -175 degrees to 133 degrees
+            - (Diagram of Joint Rotational Range)
         - Joint 4's rotational limits: -165 degrees to 150 degrees
             - Exact Limits: 73 degrees to 24 degrees
-            - Standing straight up is -135 degrees
+            - (Diagram of Joint Rotational Range)
     - There is no block nor are there restrictions on joint 6.
+        - (Diagram of Joint Rotational Range)
 
 ### Min and Max Angles According to the Python API:
 * Joint 1
@@ -144,9 +151,9 @@ _TODO: Retest these findings on new cobot. - Haley_
 --- 
 ---
 
-## Development Languages
+# Development Languages
 
-### [myBlockly](https://docs.elephantrobotics.com/docs/gitbook-en/5-ProgramingApplication-myblockly-uiflow-mind/5.1-myblockly/)
+## [myBlockly](https://docs.elephantrobotics.com/docs/gitbook-en/5-ProgramingApplication-myblockly-uiflow-mind/5.1-myblockly/)
 myBlockly is a "Puzzle programming [drag-and-drop/block-based programming] software based on python enviornments and pymycobot dependent libraries."
 * Requires a completely setup Python enviornment
 * Also generates Python script based on blockly code
@@ -160,16 +167,16 @@ _Blockly code isn't running on the cobot despite the Python code running just fi
 
 ---
 
-### [UIFlow](https://docs.elephantrobotics.com/docs/gitbook-en/5-ProgramingApplication-myblockly-uiflow-mind/5.2-UIFlow/)
+## [UIFlow](https://docs.elephantrobotics.com/docs/gitbook-en/5-ProgramingApplication-myblockly-uiflow-mind/5.2-UIFlow/)
 UIFlow is a "programming tool specifically designed for the M5 hardware system using [Blockly](https://developers.google.com/blockly) and Python code".
 - Typically used for primary/secondary schools to be able to develop apps for the M5Core
 
 [Web-Based IDE](https://flow.m5stack.com/)
 
-#### Downloads 
+### Downloads 
 - [Official Windows 64-bit Desktop Application Download from Elephant Robotics](https://static-cdn.m5stack.com/resource/software/UIFlow-Desktop-IDE.zip)
 
-#### Documentation
+### Documentation
 - Official Documentation is in Chinese, but has some starter videos on the [Web IDE](https://flow.m5stack.com/).
     - [For the M5StickC](https://shop.m5stack.com/products/stick-c?variant=17203451265114)
         - [Documentation (Chinese)](https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/docs/M5StickC_Guide.pdf)
@@ -178,14 +185,14 @@ UIFlow is a "programming tool specifically designed for the M5 hardware system u
 
 ---
 
-### [RoboFlow Operating System](https://docs.elephantrobotics.com/docs/gitbook-en/6-ApplicationBaseRoboFlow/)
+## [RoboFlow Operating System](https://docs.elephantrobotics.com/docs/gitbook-en/6-ApplicationBaseRoboFlow/)
 
 - Built to be run on teaching pendants for Elephant Robotics cobots.
 
-#### Downloads:
+### Downloads:
 - [Official Download from Elephant Robotics](https://www.elephantrobotics.com/en/downloads/)
 
-#### Documentation
+### Documentation
 - [Operation and Programming Manual](https://static.elephantrobotics.com/wp-content/uploads/2019/06/Operation-and-Programming-Manual-EN.pdf)
 - RoboFlowScript: C-based programming language to "control the robot" (not completely described)
     - [RoboFlowScript Programming Language Manual](https://static.elephantrobotics.com/wp-content/uploads/2019/06/1-RoboFlowScript_Manual.pdf)
@@ -195,16 +202,16 @@ UIFlow is a "programming tool specifically designed for the M5 hardware system u
 
 ---
 
-### Python
+## Python
 
 * [Installing the `pymycobot` library](https://docs.elephantrobotics.com/docs/gitbook-en/7-ApplicationBasePython/7.1_download.html#714-preparations)
 
-#### Downloads:
+### Downloads:
 - [`pymycobot` Github](https://github.com/elephantrobotics/pymycobot)
     - [Latest Release](https://github.com/elephantrobotics/pymycobot/releases/)
     - Use `pip` or `pip3` to install `pymycobot` to your enviornment.
 
-#### Documentation
+### Documentation
  * [`pymycobot` library documentation from Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/7-ApplicationBasePython/)
  * [Python API for myCobot](https://pypi.org/project/pymycobot/)
  * [`pymycobot` GitHub ReadMe](https://github.com/elephantrobotics/pymycobot/blob/main/README.md)
@@ -283,7 +290,7 @@ For Best Results:
 
 ---
 
-### C#
+## C#
 
 * Recommends using VSCode 2019
 * [Source Code](https://github.com/elephantrobotics/Mycobot.csharp)
@@ -296,7 +303,7 @@ Tested with the Following Environment:
 * .NET SDK 6.0.301
 * [Mycobot.csharp v1.2](https://github.com/elephantrobotics/Mycobot.csharp/releases)
 
-#### [Recommended Steps for Set-Up](https://docs.elephantrobotics.com/docs/gitbook-en/9-ApplicationBaseCSharp/9.2-build.html#922-running-in-windows)
+### [Recommended Steps for Set-Up](https://docs.elephantrobotics.com/docs/gitbook-en/9-ApplicationBaseCSharp/9.2-build.html#922-running-in-windows)
 
 1. Setup Your C# Environment
     * Download and install the [.NET core](https://dotnet.microsoft.com/en-us/download) and [.NET framework](https://dotnet.microsoft.com/en-us/download/dotnet-framework) from Microsoft.
@@ -394,14 +401,14 @@ Researching Solutions
 
 ---
 
-### [ROS](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/)
+## [ROS](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/)
 
 * Install Firmware using [myStudio](https://docs.elephantrobotics.com/docs/gitbook-en/4-BasicApplication/4.1-myStudio/)
 * Only need to build a ROS enviornment for the MyCobot 280-M5
 
 [ROS Wiki](http://wiki.ros.org/Documentation)
 
-#### Setting Up ROS and myCobot:
+### Setting Up ROS and myCobot:
 1. Build your ROS Enviornment 
     * [ROS Enviornment Building Instructions by Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.1-ROS1/12.1.2-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html#12122-environment-installation)
         * ROS versions supported:
@@ -417,7 +424,7 @@ Researching Solutions
 4. Download `mycobot_ros`
     * [`mycobot_ros` on GitHub](https://github.com/elephantrobotics/mycobot_ros)
 
-#### 3D Visualization using `rviz`
+### 3D Visualization using `rviz`
 
 [Official ROS Documentation on `rviz`](http://wiki.ros.org/rviz)
 
@@ -434,36 +441,91 @@ Configure your ROS enviornment and run the following to test the visualization f
 roslaunch src/mycobot_ros/mycobot_280/launch/test.launch
 ```
 
-#### Using `mycobot_ros`
+### Using `mycobot_ros`
 * [Arm Control and Following](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.4-rivz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/#1242-control-and-following-of-the-robot-arm)
 * [Simple GUI Control Interface](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.4-rivz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/#1244-gui-control)
     * [Keyboard Control](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.4-rivz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/#12441-keyboard-control)
 * [Camera Control](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.4-rivz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/#1245-vision)
 
-#### Using `mycobot_ros` and `MoveIt`
+### Using `mycobot_ros` and `MoveIt`
 * [Documentation on integrated MoveIt Functions](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.5-Moveit/)
 
 ---
 
-### [ROS2]()
+## ROS2
 
 * Install Firmware using [myStudio](https://docs.elephantrobotics.com/docs/gitbook-en/4-BasicApplication/4.1-myStudio/)
 * Only need to build a ROS enviornment for the MyCobot 280-M5
+* Tested on ROS Foxy for Ubuntu LTS 20.04
+
+ROS2 Versions Supported:
+* Ubuntu __ / ROS Humble
+* Ubuntu __ / ROS Galactic
+* Ubuntu 20.04 / [ROS Foxy](https://docs.ros.org/en/foxy/index.html)
 
 [ROS Wiki](http://wiki.ros.org/Documentation)
 
-#### Setting Up ROS and myCobot:
-1. Build your ROS Enviornment 
-    * [ROS Enviornment Building Instructions by Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.1-ROS2%E7%9A%84%E5%AE%89%E8%A3%85.html)
-        * ROS2 Versions Supported: 
-            - Ubuntu 20.04 / ROS Foxy
-    * [Instructions from ROS Wiki](https://docs.ros.org/en/foxy/index.html) <- these ones
+### Setting Up ROS and myCobot:
+
+1. Build your ROS Enviornment
+    * Follow the installation instructions for your choosen ROS distribution.
+    * This can be done from source or using the binaries.
 2. Install the MoveIt function packages
-    * [Instructions from Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.6-moveit2%E7%9A%84%E5%AE%89%E8%A3%85.html)
-    * [Install/Build Instructions from ROS](https://github.com/ros-planning/moveit2) 
+    * [Install & Build Instructions](https://github.com/ros-planning/moveit2) 
 3. Download and build your myCobot ROS2 workspace
     * [Workspace Instructions from Elephant Robotics](https://github.com/elephantrobotics/mycobot_ros2/blob/humble/README.md)
 
-#### 3D Visualization and Cobot Control using `rviz`
+### 3D Visualization and Cobot Control using `rviz`
 
 https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.7-rivz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/ 
+
+### Steps for Use:
+1. Navigate to your myCobot ROS workspace.
+2. Adjust the original Python scripts to reference your cobot's serial port.
+    1. The original Python scripts reference the `/dev/ttyUSB0` serial port; however, your cobot may be different.
+    2. Navigate to the `dev` directory on your system to check which port your cobot is calling itself.
+        * Previous Ports: `/dev/ttyUSB0`, `/dev/ttyAMC0`
+    3. The original Python scripts are located in your workspace under `install/mycobot_280/lib/python3.8/site-packages/mycobot_280/`.
+3. Remember to source both your ROS distrobution and your workspace.
+    * From the root of your myCobot workspace:
+    ```
+        source /opt/ros/{distribution_name}/setup.bash
+        source ./install/setup.bash
+    ```
+
+### Test Script
+
+The following command will open `rviz` and display a model of the cobot. 
+```
+    ros2 launch mycobot_280 test.launch.py
+```
+
+### Elephant Robotics User Interfaces
+
+#### [Slider Control](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.7-rivz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/#122721-slider-control)
+* Control the cobot through the use of the slider component.
+* You should see the cobot mirror the model's movement in `rviz`.
+
+#### [Model Following](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.7-rivz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/#122722-model-follow)
+* The cobot model in `rviz` will follow the movement of your cobot in real-time. 
+* Requires a separate script to move the cobot.
+
+#### [GUI for Rotational and Coordinate-Based Movement](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.7-rivz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/#12274-gui-control)
+* "A simple GUI control interface" that supports movement by angular and coordinate-based movement. 
+* The interface is in Chinese.
+    * (Translated interface here.)
+
+Notes: 
+* Currently not working as intended. 
+    * The `rviz` model is not building properly.
+    * Movement signals are not being sent to the cobot. 
+* More testing/debugging needed.
+
+#### [Keyboard Controller for Coordinate-Based Movement](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.7-rivz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/#122741-keyboard-control)
+* 
+
+Notes: 
+* Currently not working as intended. 
+    * The `rviz` model is not building properly.
+    * Movement signals are not being sent to the cobot OR its not taking input properly.
+* More testing/debugging needed.
