@@ -19,6 +19,24 @@
 - [Video Tutorials](https://www.elephantrobotics.com/en/support-280-m5-en/)
 - [User Manual](https://www.elephantrobotics.com/wp-content/uploads/2021/03/myCobot-User-Mannul-EN-V20210318.pdf)
 
+## Table of Contents
+1. Basic Drivers
+2. myStudio
+3. Steps to Run a Program
+4. Details on Rotational Movement
+5. Details on Coordinate-Based Movement
+6. Software Development Tools
+   1. MyBlockly
+   2. UIFlow
+   3. RoboFlow
+   4. Python
+   5. C#
+   6. ROS
+   7. ROS2
+
+---
+---
+
 ## Basic Drivers
 
 ![Driver Diagram](https://docs.elephantrobotics.com/docs/gitbook-en/resourse/4-BasicApplication/4.1/4.1-mystudio1.jpg)
@@ -115,19 +133,19 @@ _TODO: Retest these findings on new cobot. - Haley_
             - Exact Limits: 73 degrees to 24 degrees (?)
     - There is no block nor are there restrictions on Joint 6.
 
-#### Joint 1
+#### Diagram of Joint 1
 ![Joint 1 Diagram](https://github.com/vcuse/elefante/blob/main/Images/Joint%201.jpg)
 
-#### Joint 2
+#### Diagram of Joint 2
 ![Joint 2 Diagram](https://github.com/vcuse/elefante/blob/main/Images/Joint%202.png)
 
-#### Joints 3 and 4
+#### Diagram of Joints 3 and 4
 ![Joint 3/4 Diagram](https://github.com/vcuse/elefante/blob/main/Images/Joint%203_4.png)
 
-#### Joint 5
+#### Diagram of Joint 5
 ![Joint 5 Diagram](https://github.com/vcuse/elefante/blob/main/Images/Joint%205.png)
 
-#### Joint 6
+#### Diagram of Joint 6
 ![Joint 6 Diagram](https://github.com/vcuse/elefante/blob/main/Images/Joint%206.png)
 
 ### Min and Max Angles According to the Python API:
@@ -161,7 +179,7 @@ _TODO: Retest these findings on new cobot. - Haley_
 --- 
 ---
 
-# Development Languages
+# Development Tools
 
 ## [myBlockly](https://docs.elephantrobotics.com/docs/gitbook-en/5-ProgramingApplication-myblockly-uiflow-mind/5.1-myblockly/)
 myBlockly is a "Puzzle programming [drag-and-drop/block-based programming] software based on python enviornments and pymycobot dependent libraries."
