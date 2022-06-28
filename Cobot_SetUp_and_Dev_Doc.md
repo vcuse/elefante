@@ -20,19 +20,19 @@
 - [User Manual](https://www.elephantrobotics.com/wp-content/uploads/2021/03/myCobot-User-Mannul-EN-V20210318.pdf)
 
 ## Table of Contents
-1. Basic Drivers
-2. myStudio
-3. Steps to Run a Program
-4. Details on Rotational Movement
-5. Details on Coordinate-Based Movement
-6. Software Development Tools
-   1. MyBlockly
-   2. UIFlow
-   3. RoboFlow
-   4. Python
-   5. C#
-   6. ROS
-   7. ROS2
+1. [myCobot Drivers](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#basic-drivers)
+2. [myStudio](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#mystudio)
+3. [Steps to Run a Program](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#steps-to-run-a-program)
+4. [Details on Rotational Movement](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#rotational-movement)
+5. [Details on Coordinate-Based Movement](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#coordinate-movements)
+6. [Software Development Tools](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#development-tools)
+   1. [myBlockly](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#myblockly)
+   2. [UIFlow](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#uiflow)
+   3. [RoboFlow](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#roboflow-operating-system)
+   4. [Python](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#python)
+   5. [C#](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#c)
+   6. [ROS](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#ros)
+   7. [ROS2](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#ros2)
 
 ---
 ---
