@@ -9,7 +9,8 @@
     * [LCD (BASIC)](https://shop.m5stack.com/collections/m5-controllers/products/esp32-basic-core-iot-development-kit-v2-6)
         * [M5Go Core User Manual](https://flow.m5stack.com/download/M5GO_User_Manual_en.pdf)
     * [LCD (ATOM)](https://shop.m5stack.com/products/atom-matrix-esp32-development-kit?_pos=25&_sid=b13b754ab&_ss=r)
-    * [360 degree Servos](https://shop.m5stack.com/collections/m5-accessories/products/servo-kit-360)
+    * [Joint 5 Servo](https://www.aliexpress.com/item/3256801491791245.html?gatewayAdapt=4itemAdapt) 
+    * 
 * The robot was assembled by Elephant Robotics.
 * Target Audience: Schools and Classrooms
 
