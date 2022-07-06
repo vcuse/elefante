@@ -113,7 +113,6 @@ The myCobot 280 M5 has 6 joints, labeled 1 through 6, that control the robots mo
 
 According to Elephant Robotics Documentation, each joint's range of rotational degrees of movement is as follows: -160 deg. to 160 deg. or -165 deg to 165 deg; however, see the findings below for the true limits and rotational descriptions for each joint.
 
-_TODO: Retest these findings on new cobot. - Haley_
 
 ### Rotational Limits:
 - Rotational Limit on Angles: 190 deg or -190 deg
@@ -169,7 +168,7 @@ _TODO: Retest these findings on new cobot. - Haley_
     * Max: 21608 degrees
 
 ### Notes:
-* Despite all movement commands operating in degrees between -180, 0, and 180 **or less*, the functions that return the minimum and maximum angle possible return coterminal angle values (?).
+* Despite all movement commands operating in degrees between -180, 0, and 180 *or less*, the functions that return the minimum and maximum angles possible return coterminal angle values (?).
     * Adding onto this, some joints cannot move a complete 360 degrees.
 
 ## Coordinate Movements
@@ -425,7 +424,7 @@ Researching Solutions
     - This doesnt happen in Python.
     - Is there a way to turn this off?
     - Looked in the [Microsoft Doc](https://docs.microsoft.com/en-us/dotnet/api/system.io.ports.serialport?view=dotnet-plat-ext-6.0) and the reboot signal doesnt seem to be coming from here
-- The .NET libraries provided with Elephant Robotics' [latest release](https://github.com/elephantrobotics/Mycobot.csharp/releases/tag/v1.2) were oddly unnecessary to run the Cobot on C# alone. More testing is needed to prove this.
+- The .NET libraries provided with Elephant Robotics' [latest release](https://github.com/elephantrobotics/Mycobot.csharp/releases/tag/v1.2) were oddly unnecessary to run the Cobot on C# alone.
 
 ---
 
@@ -440,9 +439,9 @@ Researching Solutions
 1. Build your ROS Enviornment 
     * [ROS Enviornment Building Instructions by Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.1-ROS1/12.1.2-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html#12122-environment-installation)
         * ROS versions supported:
-            - Ubuntu 16.04 / ROS Kinetic
-            - Ubuntu 18.04 / ROS Melodic
-            - Ubuntu 20.04 / ROS Noetic
+            - Ubuntu 16.04 / [ROS Kinetic](http://wiki.ros.org/kinetic)
+            - Ubuntu 18.04 / [ROS Melodic](http://wiki.ros.org/melodic)
+            - Ubuntu 20.04 / [ROS Noetic](http://wiki.ros.org/noetic)
     * [Instructions from ROS Wiki](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment)
 2. Install the MoveIt function packages
     * [Instructions from Elephant Robotics](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.1-ROS1/12.1.2-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html#11-installing-ros)
@@ -487,9 +486,9 @@ roslaunch src/mycobot_ros/mycobot_280/launch/test.launch
 * Tested on ROS Foxy for Ubuntu LTS 20.04
 
 ROS2 Versions Supported:
-* Ubuntu __ / ROS Humble
-* Ubuntu __ / ROS Galactic
 * Ubuntu 20.04 / [ROS Foxy](https://docs.ros.org/en/foxy/index.html)
+* Ubuntu 20.04 / [ROS Galactic](https://docs.ros.org/en/galactic/index.html)
+* Ubuntu 22.04 / [ROS Humble](https://docs.ros.org/en/humble/index.html)
 
 [ROS Wiki](http://wiki.ros.org/Documentation)
 
@@ -541,7 +540,7 @@ The following command will open `rviz` and display a model of the cobot.
 #### [GUI for Rotational and Coordinate-Based Movement](https://docs.elephantrobotics.com/docs/gitbook-en/12-ApplicationBaseROS/12.2-ROS2/12.2.7-rivz%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8/#12274-gui-control)
 * "A simple GUI control interface" that supports movement by angular and coordinate-based movement. 
 * The interface is in Chinese.
-    * (Translated interface here.)
+    * (Put translated interface here.)
 
 Notes: 
 * Currently not working as intended. 
