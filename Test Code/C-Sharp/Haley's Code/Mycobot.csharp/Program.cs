@@ -23,11 +23,8 @@ namespace Mycobot.csharp
             Thread.Sleep(5000);
 
             //Console.WriteLine("...Performing Movement");
-            for(int i = 0; i<5; i++)
-            {
-                shakeHead(mc);
-            }
-            rockBackAndForth(mc);
+            
+            rockBackAndForthForever(mc);
 
             /*Console.WriteLine("Gertrude:");
             var recAngles = mc.GetAngles();
@@ -57,7 +54,7 @@ namespace Mycobot.csharp
             Thread.Sleep(500);
         }
 
-        public static void rockBackAndForth(MyCobot mc)
+        public static void rockBackAndForthForever(MyCobot mc)
         {
             double x = 0.0;
             int nextAngle = 0;
@@ -77,8 +74,6 @@ namespace Mycobot.csharp
                     mc.SendAngles(new int[] { currentAngleJoint1, -nextAngle, nextAngle, -nextAngle, 0, 0 }, 100);
                     Thread.Sleep(100);
 
-                    //Console.WriteLine("x: " + x + " Arcsine(-x):" + Math.Asin(x) + " ...in Degrees: " + nextAngle);
-
                     x -= 0.02;
                 }
 
@@ -89,11 +84,47 @@ namespace Mycobot.csharp
                     mc.SendAngles(new int[] { currentAngleJoint1, -nextAngle, nextAngle, -nextAngle, 0, 0 }, 100);
                     Thread.Sleep(100);
 
-                    //Console.WriteLine("x: " + x + " Arcsine(-x):" + Math.Asin(x) + " ...in Degrees: " + nextAngle);
-
                     x += 0.02;
                 }
             }
         }
+
+        public static void rockBackAndForth(MyCobot mc)
+        {
+            double x = 0.0;
+            int nextAngle = 0;
+            int currentAngleJoint1 = 0;
+
+            int[] currentAngles = mc.GetAngles();
+            if (currentAngles.Length != 0)
+            {
+                currentAngleJoint1 = currentAngles[0];
+            }
+
+            while (x >= -0.98)
+            {
+                nextAngle = (int)((180 / Math.PI) * Math.Asin(x));
+                mc.SendAngles(new int[] { currentAngleJoint1, -nextAngle, nextAngle, -nextAngle, 0, 0 }, 100);
+                Thread.Sleep(100);
+
+                //Console.WriteLine("x: " + x + " Arcsine(-x):" + Math.Asin(x) + " ...in Degrees: " + nextAngle);
+
+                x -= 0.02;
+            }
+
+
+            while (x <= 0.98)
+            {
+                nextAngle = (int)((180 / Math.PI) * Math.Asin(x));
+                mc.SendAngles(new int[] { currentAngleJoint1, -nextAngle, nextAngle, -nextAngle, 0, 0 }, 100);
+                Thread.Sleep(100);
+
+                //Console.WriteLine("x: " + x + " Arcsine(-x):" + Math.Asin(x) + " ...in Degrees: " + nextAngle);
+
+                x += 0.02;
+            }
+        }
+
+
     }
 }
