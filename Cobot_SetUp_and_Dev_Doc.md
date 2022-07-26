@@ -558,3 +558,30 @@ Notes:
     * The `rviz` model is not building properly.
     * Movement signals are not being sent to the cobot OR its not taking input properly.
 * More testing/debugging needed.
+
+--- 
+
+# Frequently Encountered Issues
+
+Below is a list of freqently encounters problems when working with the myCobot 280 M5. If a solution has been found, it is logged here with the issue.
+
+## Hardware Issues
+
+### ATOM Issues
+
+#### Issue 1:
+While connected via serial port (USB), the ATOM LED lights do not respond to Python commands to change color.
+
+**Solutions**:
+- _Currently looking for solutions._
+
+### Connection Issues
+
+#### Issue 1: 
+While connected via serial port (USB), the cobot is able to recieve angles sent via code; but, the cobot does not report its own angles (i.e.: its current position).
+
+**Solutions**:
+- Reset the BASIC by pressing the red button on the left side of the BASIC (right above the USB-C port).
+- Hard reset the cobot by unplugging the USB connection and power adapter from the cobot. Wait 7 seconds, then plug back in the power adapter and USB connection.
+
+## Software Issues
