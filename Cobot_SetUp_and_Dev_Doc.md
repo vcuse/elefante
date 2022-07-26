@@ -10,7 +10,6 @@
         * [M5Go Core User Manual](https://flow.m5stack.com/download/M5GO_User_Manual_en.pdf)
     * [LCD (ATOM)](https://shop.m5stack.com/products/atom-matrix-esp32-development-kit?_pos=25&_sid=b13b754ab&_ss=r)
     * [Joint 5 Servo](https://www.aliexpress.com/item/3256801491791245.html?gatewayAdapt=4itemAdapt) 
-    * 
 * The robot was assembled by Elephant Robotics.
 * Target Audience: Schools and Classrooms
 
@@ -84,6 +83,8 @@ myStudio is a "one-stop application platform for myRobot/myCobot and other robot
 2. The cobot is now ready to accept instructions.
 
 ### Controlling the Cobot Arm via TCP/IP
+
+_Note: The instructions below only describe how to connect to WiFi using Python3 and a myCobot Pi._
 
 [Instructions on how to connect to the cobot wirelessly via TCP/IP](https://docs.elephantrobotics.com/docs/gitbook-en/7-ApplicationBasePython/7.6_TCPIP.html)
 
@@ -421,7 +422,7 @@ Researching Solutions
     - Same error as before; cant see the System.IO namespace
 
 #### Notes:
-- Must still navigate to the "Transponder" page to properly send angles/coord. to the cobot; however, it automatically reboots the computer (Basic) after each use. This means you have to navigate to the "Transponder" page every time you want to run your program.
+- Must still navigate to the "Transponder" page to properly send angles/coord. to the cobot; however, it automatically reboots the computer (Basic) after each use. 
     - This doesnt happen in Python.
     - Is there a way to turn this off?
     - Looked in the [Microsoft Doc](https://docs.microsoft.com/en-us/dotnet/api/system.io.ports.serialport?view=dotnet-plat-ext-6.0) and the reboot signal doesnt seem to be coming from here
