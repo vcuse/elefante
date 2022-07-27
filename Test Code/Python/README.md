@@ -2,7 +2,37 @@
 
 ### `basic_lead_through.py`
 
+- **Description**: 
+- **Author**: Haley Currence
+- **Version**: 1.0
 
+### `led_test.py`
+
+- **Description**: 
+- **Author**: Elephant Robotics
+
+### `program_generator_automatic.py`
+
+- **Description**: 
+- **Author**: Haley Currence
+- **Version**: 1.0
+
+### `program_generator_manual.py`
+
+- **Description**: 
+- **Author**: Haley Currence
+- **Version**: 1.0
+
+### `python2BotsTestCode.py`
+
+- **Description**: 
+- **Author**: Haley Currence
+- **Version**: 1.0
+
+### `robot_dance.py`
+
+- **Description**: 
+- **Author**: Elephant Robotics
 
 ## vcupycobot - VCU SE Lab's MyCobot Module
 

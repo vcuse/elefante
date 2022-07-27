@@ -5,9 +5,10 @@
 ## About
 
 "myCobot is the world's smallest and lightest six-axis collaborative robot, jointly produced by [Elephant Robotics](https://www.elephantrobotics.com/en/our-company/) and [M5STACK](https://m5stack.com/about-us). It is more than a productivity tool full of imaginations, can carry on the secondary development according to the demands of users to achieve personalized customization."
-* The robot itself was built using modular components from M5Stack
+* The robot itself was built using modular components from M5Stack and other providers:
     * [LCD (BASIC)](https://shop.m5stack.com/collections/m5-controllers/products/esp32-basic-core-iot-development-kit-v2-6)
         * [M5Go Core User Manual](https://flow.m5stack.com/download/M5GO_User_Manual_en.pdf)
+            * Wireless and RF Integrated Circuit Chip: [ESP32-DOWDQ6-V3](https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf)
     * [LCD (ATOM)](https://shop.m5stack.com/products/atom-matrix-esp32-development-kit?_pos=25&_sid=b13b754ab&_ss=r)
     * [Joint 5 Servo](https://www.aliexpress.com/item/3256801491791245.html?gatewayAdapt=4itemAdapt) 
 * The robot was assembled by Elephant Robotics.
