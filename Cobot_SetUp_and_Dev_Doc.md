@@ -42,9 +42,9 @@
 
 ![Driver Diagram](https://docs.elephantrobotics.com/docs/gitbook-en/resourse/4-BasicApplication/4.1/4.1-mystudio1.jpg)
 
-[How to Confirm Which Basic Chip is in the Robot](https://docs.elephantrobotics.com/docs/gitbook-en/4-BasicApplication/4.1-myStudio/4.1.1-myStudio_download_driverinstalled.html#4113-how-to-distinguish-between-cp210x-chip-and-cp34x-chip)
+[How to Confirm Which Basic Chip is in the Robot](https://docs.elephantrobotics.com/docs/gitbook-en/4-BasicApplication/4.1-myStudio/4.1.1-myStudio_download_driverinstalled.html#4113-how-to-distinguish-between-cp210x-chip-and-cp34x-chip)[^1]
 
-Basic Driver for myCobot 280 M5: CP210x **(Recommended)**
+Basic Driver for myCobot 280 M5: CP210x **(Recommended on Linux)**
 - [Windows 10](https://www.elephantrobotics.com/software/drivers/CP210x_VCP_Windows.zip)
 - [Linux](https://www.elephantrobotics.com/software/drivers/CP210x_VCP_Linux.zip)
 - [MacOS](https://www.elephantrobotics.com/software/drivers/CP210x_VCP_MacOS.zip)
@@ -56,6 +56,8 @@ New Basic Driver for myCobot 280 M5: CH9102
 
 Atom Serial Port Driver:
 - [Windows 10](https://download.elephantrobotics.com/software/drivers/CDM21228_Setup.zips)
+
+[^1]: Windows may automatically install the best driver for you. On Linux, it is recommended to use the CP210x driver.
 
 ## [myStudio](https://docs.elephantrobotics.com/docs/gitbook-en/4-BasicApplication/4.1-myStudio/)
 
@@ -70,26 +72,35 @@ myStudio is a "one-stop application platform for myRobot/myCobot and other robot
 
 ## Steps to Run a Program:
 1. Download and install myStudio onto your computer.
-1. Make sure you have all drivers installed onto your computer.
-    * _May not be necessary. Both Python and C# can be run on the cobot without having drivers installed on Windows. - Haley_
-2. Make sure the miniRobot firmware running on Basic (the base of the cobot) is up-to-date
+2. Make sure you have all drivers installed onto your computer.
+3. Make sure the miniRobot firmware running on Basic (the base of the cobot) is up-to-date
     * Flash the newest release via myStudio
     * Newest release: **miniRobot v2.0**
-3. On the Basic (the computer at the base of the cobot), navigate to the "Transponder" screen. 
+4. Make sure the firmware for ATOM (the top of the cobot) is up-to-date
+    * Flash the newest release via myStudio
+    * Newest release: **ATOM v5.1**
+5. On the Basic (the computer at the base of the cobot), navigate to the "Transponder" screen. 
 
 ### Connecting to the Cobot via Serial Port
 
 1. Connect the cobot to your computer using the USB-C on the left-side of the cobot's LCD.
-1. On the "Transponder" screen, select "USB UART". 
-2. The cobot is now ready to accept instructions.
+2. On the "Transponder" screen, select "USB UART". 
+3. Check the status of ATOM.
+    * If the BASIC can successfully connect to ATOM, the "USB UART" page will say "Atom : ok".
+    * If the BASIC cannot successfully connect to ATOM, the "USB UART" page will say "Atom : no".
+4. The cobot is now ready to accept instructions.
 
 ### Controlling the Cobot Arm via TCP/IP
 
-_Note: The instructions below only describe how to connect to WiFi using Python3 and a myCobot Pi._
+_Note: The instructions below only describe how to connect to WiFi using Python3 and a myCobot Pi. M5 instructions are minimal._
 
 [Instructions on how to connect to the cobot wirelessly via TCP/IP](https://docs.elephantrobotics.com/docs/gitbook-en/7-ApplicationBasePython/7.6_TCPIP.html)
 
+_ There are functions built into `pymycobot` (the Python module) to set up the cobot's wifi connect; however, there is no documentation on them. When testing, it is inconclusive whether the functions are actually configuring the network connection for continuous use. I have reached out to support to ask about this. Wish me luck! - Haley _
+
 ### Running on Bluetooth:
+
+There are two methods to connect to the cobot using Bluetooth:
 
 Using the `myCobot BLE` server:
 1. Flash the myCobot bluetooth server, `myCobot BLE`, to your cobot's BASIC using myStudio.
@@ -105,7 +116,7 @@ Using `miniRobot v2.0`:
     * Once you have confirmed that they are the same, select the `pair` or `confirm` option on both devices.
 
 #### [myCobot Phone Controller App](https://github.com/elephantrobotics/myCobot/tree/main/Software/phone%20controller)
-* Unfortunately, this controller is only a preview. All assets on the app work, however the app itself is unable to connect to the cobot via bluetooth - including when the phone itself is successfully connected.
+* Unfortunately, this controller is only a preview. All assets on the app work; however, the app itself is unable to connect to the cobot via Bluetooth - including when the phone itself is successfully connected to the cobot.
 * Excellent app design. If we could get this working, that'd be neat.
 
 _No more information was available on how to send instructions via Bluetooth. - Haley_
@@ -115,7 +126,6 @@ _No more information was available on how to send instructions via Bluetooth. - 
 The myCobot 280 M5 has 6 joints, labeled 1 through 6, that control the robots movement via the use of 360 degree servos.
 
 According to Elephant Robotics Documentation, each joint's range of rotational degrees of movement is as follows: -160 deg. to 160 deg. or -165 deg to 165 deg; however, see the findings below for the true limits and rotational descriptions for each joint.
-
 
 ### Rotational Limits:
 - Rotational Limit on Angles: 190 deg or -190 deg
