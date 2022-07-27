@@ -2,36 +2,36 @@
 
 ### `basic_lead_through.py`
 
-- **Description**: 
+- **Description**: Allows the user to record the position of the cobot after manual manipulation.
 - **Author**: Haley Currence
 - **Version**: 1.0
 
 ### `led_test.py`
 
-- **Description**: 
+- **Description**: Tests the ATOM LED.
 - **Author**: Elephant Robotics
 
 ### `program_generator_automatic.py`
 
-- **Description**: 
+- **Description**: Records the position of the cobot automatically while the cobot is being manually manipulated. Once the user is done manipulating the cobot, the program generates a python script that moves the cobot through the recorded positions.
 - **Author**: Haley Currence
 - **Version**: 1.0
 
 ### `program_generator_manual.py`
 
-- **Description**: 
+- **Description**: While the cobot is being manually manipulated, the position of the cobot must be manually recorded via keyboard command. Once the user is done manipulating the cobot, the program generates a python script that moves the cobot through the recorded positions.
 - **Author**: Haley Currence
 - **Version**: 1.0
 
 ### `python2BotsTestCode.py`
 
-- **Description**: 
+- **Description**: Script written to test approaches to manipulating two cobots at once.
 - **Author**: Haley Currence
 - **Version**: 1.0
 
 ### `robot_dance.py`
 
-- **Description**: 
+- **Description**: Makes the robot dance.
 - **Author**: Elephant Robotics
 
 ## vcupycobot - VCU SE Lab's MyCobot Module
@@ -58,12 +58,18 @@ This module contains helpful functions that build off of the original `pymycobot
     - `vcupycobot.check_cobot_connection()`
 
 ### angle_in_position(cobot : MyCobot, joint_id : int, expected_angle : int)
-- **Description**: Description Here
+- **Description**: Checks to see if the angular position of each of the specified joint of the indicated cobot matches the expected angle.
 - **Parameters**: 
-    - Parameter Descriptions Here
-- **Returns**: Return Value Descriptions Here
+    - `cobot : MyCobot` - An instance of a MyCobot object corresponding to a cobot connected via serial port.
+    - `joint_id : int` - The identification number of the joint you intend to move. Accepts ID numbers 1 - 6. 
+    - `expected_angle : int` - A list of 6 angular values, each value being between -180 degrees and 180 degrees.
+- **Returns**:
+    - A Boolean value: 
+        - `True`, if the position of the joint matches the expected angle;
+        - `False`, if the position of the joint does not match the expected angle.
 - **Usage Examples**:
-    - Usage Examples Here
+    - `while not vcupycobot.angle_in_position(mc, 1, angle):`
+    - `if vcupycobot.angles_in_position(cobot, 2, 0):`
 
 ### angles_in_position(cobot : MyCobot, expected_angles : list)
 - **Description**: Checks to see if the angular position of each of the joints of the indicated cobot matches the angles indicated by the list of expected angles. 
