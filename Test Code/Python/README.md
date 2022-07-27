@@ -3,6 +3,8 @@
 ### `basic_lead_through.py`
 
 - **Description**: Allows the user to record the position of the cobot after manual manipulation.
+- **Arguments**: The cobot's port_id as a string. 
+    - Examples: "COM3", "tty/devAMA0"
 - **Author**: Haley Currence
 - **Version**: 1.0
 
@@ -14,12 +16,16 @@
 ### `program_generator_automatic.py`
 
 - **Description**: Records the position of the cobot automatically while the cobot is being manually manipulated. Once the user is done manipulating the cobot, the program generates a python script that moves the cobot through the recorded positions.
+- **Arguments**: The cobot's port_id as a string. 
+    - Examples: "COM3", "tty/devAMA0"
 - **Author**: Haley Currence
 - **Version**: 1.0
 
 ### `program_generator_manual.py`
 
 - **Description**: While the cobot is being manually manipulated, the position of the cobot must be manually recorded via keyboard command. Once the user is done manipulating the cobot, the program generates a python script that moves the cobot through the recorded positions.
+- **Arguments**: The cobot's port_id as a string. 
+    - Examples: "COM3", "tty/devAMA0"
 - **Author**: Haley Currence
 - **Version**: 1.0
 
@@ -54,6 +60,8 @@ This module contains helpful functions that build off of the original `pymycobot
     - N/A
 - **Returns**: 
     - N/A
+- **Exceptions**:
+    - Raises a connection exception when the cobot's angles cannot be read. (A symptom of not being connected to ATOM.)
 - **Usage Examples**:
     - `vcupycobot.check_cobot_connection()`
 
@@ -84,15 +92,21 @@ This module contains helpful functions that build off of the original `pymycobot
     - `while not vcupycobot.angles_in_position(mc, angle):`
     - `if vcupycobot.angles_in_position(cobot, [0, 0, 0, 0, 0, 0]):`
 
-### send_angle_smoothly(cobot : MyCobot, joint_id : int, start : int, end : int, speed : int)
-- **Description**: Sends a procession of angles to the cobots in succession to the specified joint from the indicated starting angular position to the indicated ending angular position. This method produces a more graceful angular movement instead of the quick movements that can be produced by the `pymycobot` modules' `send_angle` function. 
-    - If the current angle of the specified joint does not match the starting angle, the cobot will move to the starting angle.
+### send_angle_smoothly(cobot : MyCobot, joint_id : int, start : int, end : int, speed : int, delay : float)
+- **Description**: Sends a procession of angles to the cobots in succession to the specified joint from the indicated 
+    starting angular position to the indicated ending angular position. This method produces a more graceful angular 
+    movement instead of the quick movements that can be produced by the `pymycobot` modules' `send_angle` function. 
+    - If the current angle of the specified joint does not match the starting angle, the cobot will move to the starting 
+        angle.
 - **Parameters**:
     - `cobot : MyCobot` - An instance of a MyCobot object corresponding to a cobot connected via serial port.
     - `joint_id : int` - The identification number of the joint you intend to move. Accepts ID numbers 1 - 6. 
-    - `start : int` - The expected starting angle of the cobot's joint, the value being between -180 degrees and 180 degrees.
+    - `start : int` - The expected starting angle of the cobot's joint, the value being between -180 degrees and 180 
+        degrees.
     - `end : int` - The expected ending angle of the cobot's joint, the value being between -180 degrees and 180 degrees.
-    - (Optional) `speed : int` - The speed at which the cobot's joint will move to reach each of the consecutive angles. Default value of 100.
+    - (Optional) `speed : int` - The speed at which the cobot's joint will move to reach each of the consecutive angles.
+        Default value of 100.
+    - (Optional) `delay : float` - The delay, in seconds, between movement commands. Default value of 0.001 (1 ms).
 - **Returns**:
     - `0` if the joint could reach the end angle successfully
     - `-1` if the joint could not reach the end angle successfully
@@ -100,13 +114,20 @@ This module contains helpful functions that build off of the original `pymycobot
     - `vcupycobot.send_angle_smoothly(mc, 1, 0, 180)`
     - `vcupycobot.send_angle_smoothly(mc, 1, -180, 180, 50)`
 
-### send_angles_smoothly(cobot : MyCobot, start_angles : list, end_angles : list)
-- **Description**: Sends a procession of angles to the cobots in succession from the indicated starting angular positions to the indicated ending angular positions. This method produces a more graceful angular movement instead of the quick movements that can be produced by the `pymycobot` modules' `send_angles` function. 
+### send_angles_smoothly(cobot : MyCobot, start_angles : list, end_angles : list, speed : int, delay : float)
+- **Description**: Sends a procession of angles to the cobots in succession from the indicated starting angular 
+    positions to the indicated ending angular positions. This method produces a more graceful angular movement instead 
+    of the quick movements that can be produced by the `pymycobot` modules' `send_angles` function. 
     - If the current angle of the cobot does not match the starting angles, the cobot will move to the starting angles.
 - **Parameters**:
     - `cobot : MyCobot` - An instance of a MyCobot object corresponding to a cobot connected via serial port.
-    - `start_angles : list` - The expected starting angle of the cobot's joint, the value being between -180 degrees and 180 degrees.
-    - `end_angles : list` - The expected ending angle of the cobot's joint, the value being between -180 degrees and 180 degrees.
+    - `start_angles : list` - The expected starting angle of the cobot's joint, the value being between -180 degrees 
+        and 180 degrees.
+    - `end_angles : list` - The expected ending angle of the cobot's joint, the value being between -180 degrees and 
+        180 degrees.
+    - (Optional) `speed : int` - The speed at which the cobot's joint will move to reach each of the consecutive angles.
+        Default value of 100.
+    - (Optional) `delay : float` - The delay, in seconds, between movement commands. Default value of 0.1 (100 ms).
 - **Returns**:
     - `0` if the cobot could reach the end angle successfully
     - `-1` if the cobot could not reach the end angle successfully
