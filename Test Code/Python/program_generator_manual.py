@@ -38,16 +38,16 @@ def main(port_id : str):
     file_name = file_name + ".py"
     with open(file_name, 'w') as f:
         f.write('''\
-    from pymycobot import MyCobot
-    import time
-    import vcupycobot
-    
-    mc = MyCobot('COM3', 115200)
-    mc.power_on()
-    time.sleep(5)
-    
-    vcupycobot.move_to_origin(mc, 100)
-    
+from pymycobot import MyCobot
+import time
+import vcupycobot
+
+mc = MyCobot('COM3', 115200)
+mc.power_on()
+time.sleep(5)
+
+vcupycobot.move_to_origin(mc, 100)
+
     ''')
 
         for angles in recorded_angles:
