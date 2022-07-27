@@ -37,7 +37,6 @@ def main(port_id : str):
     time.sleep(5)
 
     for angle in angles:
-
         if len(angle) == 0:
             continue
 
