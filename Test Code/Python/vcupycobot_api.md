@@ -33,6 +33,9 @@ This module contains helpful functions that build off of the original `pymycobot
     - A Boolean value: 
         - `True`, if the position of the joint matches the expected angle;
         - `False`, if the position of the joint does not match the expected angle.
+- **Exceptions**:
+    - Raises an exception when the cobot's angles cannot be read. (A symptom of not being connected to ATOM.)
+    - Raises a ValueError exception if the expected angle is not within the joint's range of movement.
 - **Usage Examples**:
     - `while not vcupycobot.angle_in_position(mc, 1, angle):`
     - `if vcupycobot.angles_in_position(cobot, 2, 0):`
@@ -46,6 +49,9 @@ This module contains helpful functions that build off of the original `pymycobot
     - A Boolean value: 
         - `True`, if the position of the cobot matches the expected angles;
         - `False`, if the position of the cobot does not match the expected angles.
+- **Exceptions**:
+    - Raises an exception when the cobot's angles cannot be read. (A symptom of not being connected to ATOM.)
+    - Raises a ValueError exception if the expected angle is not within the joint's range of movement.
 - **Usage Examples**:
     - `while not vcupycobot.angles_in_position(mc, angle):`
     - `if vcupycobot.angles_in_position(cobot, [0, 0, 0, 0, 0, 0]):`
@@ -68,6 +74,8 @@ This module contains helpful functions that build off of the original `pymycobot
 - **Returns**:
     - `0` if the joint could reach the end angle successfully
     - `-1` if the joint could not reach the end angle successfully
+- **Exceptions**:
+    - Raises an exception when the cobot's angles cannot be read. (A symptom of not being connected to ATOM.)
 - **Usage Examples**:
     - `vcupycobot.send_angle_smoothly(mc, 1, 0, 180)`
     - `vcupycobot.send_angle_smoothly(mc, 1, -180, 180, 50)`
@@ -89,6 +97,8 @@ This module contains helpful functions that build off of the original `pymycobot
 - **Returns**:
     - `0` if the cobot could reach the end angle successfully
     - `-1` if the cobot could not reach the end angle successfully
+- **Exceptions**:
+    - Raises an exception when the cobot's angles cannot be read. (A symptom of not being connected to ATOM.)
 - **Usage Examples**:
     - `vcupycobot.send_angles_smoothly(mc, [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1])`
     - `vcupycobot.send_angles_smoothly(cobot, cobot.get_angles(), [-36, 20, 0, 18, 68, -180])`

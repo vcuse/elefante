@@ -123,8 +123,8 @@ def send_angle_smoothly(cobot : MyCobot, joint_id : int, start : int, end : int,
 
     try:
         if not angle_in_position(cobot, joint_id, start):
-            while not angle_in_position(cobot, joint_id, start):
-                cobot.send_angle(joint_id, start, 100)
+            cobot.send_angle(joint_id, start, 100)
+            time.sleep(2)
 
         for angle in range(start, end+1):
             cobot.send_angle(joint_id, angle, speed)
@@ -159,13 +159,12 @@ def send_angle_smoothly(cobot : MyCobot, joint_id : int, start : int, end : int,
     - `vcupycobot.send_angles_smoothly(mc, [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1])`
     - `vcupycobot.send_angles_smoothly(cobot, cobot.get_angles(), [-36, 20, 0, 18, 68, -180])`
 """
-def send_angles_smoothly(cobot : MyCobot, start_angles : list, end_angles : list, speed : int = 50, delay : float = 0.01):
+def send_angles_smoothly(cobot : MyCobot, start_angles : list, end_angles : list, speed : int = 100, delay : float = 0.1):
     check_cobot_connection(cobot)
 
     try:
         if not angles_in_position(cobot, start_angles):
-            while not angles_in_position(cobot, start_angles):
-                cobot.send_angle(start_angles, speed)
+            cobot.send_angles(start_angles, speed)
 
         prev_angles = start_angles.copy()
 
