@@ -92,6 +92,45 @@ myStudio is a "one-stop application platform for myRobot/myCobot and other robot
 
 ### Controlling the Cobot Arm via TCP/IP
 
+The myCobot 280 M5 attempts to connect to the following network, by default:
+* SSID: MyCobotWiFi2.4G
+* Password: mycobot123
+
+**Caution: The cobot cannot connect to any WiFi that has an SSID that contains a space.**
+
+#### Setting Up WiFi Network Connection Using Python3:
+1. Connect to the cobot via Serial Port. (See instructions above.)
+2. Create a new Python script and use the code below. Substitute the port ID with that of your cobot and the SSID and password with that of your desired network.
+3. Run the script below, or the `connect_to_wifi()` or `connect_to_vcuse()` functions in `vcupycobot`. 
+
+To Setup the Network:
+```python
+from pymycobot.mycobot import MyCobot
+import time
+
+# powers on the cobot
+mc = MyCobot('cobot_port_id', 115200)
+mc.power_on()
+time.sleep(5)
+
+# attempts to setup the network credentials
+mc.set_ssid_pwd("wifi_ssid", "wifi_password")
+
+# powers off the cobot
+mc.power_off()
+```
+
+* To check if the network is set up properly, replace the function call `mc.set_ssid_pwd()` with `mc.get_ssid_pwd()`.
+
+#### Connecting to WiFI:
+1. On the "Transponder" screen, select "WLAN Server".
+2. The cobot should now attempt to connect to your choosen WiFi.
+    * If you have successfully setup the cobot's network connection, you should see your wifi's SSID at the top of the screen.
+    * If unsuccessful, the top of the screen will read "MyCobotWiFi2.4G".
+3. If the cobot is unable to connect to WiFi, for any reason, you should see the following message:
+    * "WIFI Connect Failed      ssid or password error"
+4. 
+
 _Note: The instructions below only describe how to connect to WiFi using Python3 and a myCobot Pi. M5 instructions are minimal._
 
 [Instructions on how to connect to the cobot wirelessly via TCP/IP](https://docs.elephantrobotics.com/docs/gitbook-en/7-ApplicationBasePython/7.6_TCPIP.html)
