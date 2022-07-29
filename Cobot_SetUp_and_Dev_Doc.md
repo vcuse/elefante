@@ -98,7 +98,52 @@ The myCobot 280 M5 attempts to connect to the following network, by default:
 
 **Caution: The cobot cannot connect to any WiFi that has an SSID that contains a space.**
 
-#### Setting Up WiFi Network Connection Using Python3:
+#### Connecting to WiFi Using Arduino ESP32
+
+This method uses the Arduino IDE with the built-in [Wifi library](https://www.arduino.cc/reference/en/libraries/wifi/). 
+
+_If anything, this method proves that the ESP32 IC chip is working correctly. - Haley_
+
+Steps:
+1. Install the Arduino IDE
+2. Install the M5Core board library
+3. Create a new sketch and paste the code below to connect to WiFi.
+4. Burn the sketch to the cobot's Basic.
+    * The cobot connects to WiFi as "esp32-67D174"
+
+```C#
+#include <WiFi.h>
+
+// Replace with your network credentials (STATION)
+const char* ssid = "wifi_ssid";
+const char* password = "wifi_password";
+
+void initWiFi() {
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+  Serial.print("Connecting to WiFi ..");
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.print('.');
+    delay(1000);
+  }
+  Serial.println(WiFi.localIP());
+}
+
+void setup() {
+  Serial.begin(115200);
+  initWiFi();
+  Serial.print("RRSI: ");
+  Serial.println(WiFi.RSSI());
+}
+
+void loop() {}
+```
+
+[This example](https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html#wi-fi-sta-example) shows how this library may be used to set up a TCP connection.
+
+#### Connecting to WiFi using Elephant Robotic's APIs
+
+##### Setting Up WiFi Network Connection Using Python3:
 1. Connect to the cobot via Serial Port. (See instructions above.)
 2. Create a new Python script and use the code below. Substitute the port ID with that of your cobot and the SSID and password with that of your desired network.
 3. Run the script below, or the `connect_to_wifi()` or `connect_to_vcuse()` functions in `vcupycobot`. 
@@ -122,7 +167,7 @@ mc.power_off()
 
 * To check if the network is set up properly, replace the function call `mc.set_ssid_pwd()` with `mc.get_ssid_pwd()`.
 
-#### Connecting to WiFI:
+##### Connecting to WiFI:
 1. On the "Transponder" screen, select "WLAN Server".
 2. The cobot should now attempt to connect to your choosen WiFi.
     * If you have successfully setup the cobot's network connection, you should see your wifi's SSID at the top of the screen.
