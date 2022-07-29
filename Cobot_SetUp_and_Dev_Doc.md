@@ -107,38 +107,14 @@ _If anything, this method proves that the ESP32 IC chip is working correctly. - 
 Steps:
 1. Install the Arduino IDE.
 2. Install the M5Core board library.
-3. Create a new sketch and paste the code below to connect to WiFi.
+3. Use the `connect_and_send_packets` script to connect to WiFi and start sending TCP packets.
 4. Burn the sketch to the cobot's Basic.
     * The cobot connects to WiFi as "esp32-67D174"
+    * _I had to use the "Wireless Network Watcher" to determine the IP address of the cobot. The cobot did not appear through any command line commands. - Haley_
+5. Use the `tcp_server.py` script to recieve the packets.
 
-```C#
-#include <WiFi.h>
-
-// Replace with your network credentials (STATION)
-const char* ssid = "ssid_here";
-const char* password = "password_here";
-const char* host = "host_ip_here";
-
-void initWiFi() {
-  WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
-}
-
-void setup() {
-  Serial.begin(115200);
-  initWiFi();
-}
-
-void loop() 
-{
-  WiFiClient client;
-  const int httpPort = 80;
-  client.connect(host, httpPort);
-
-  client.print("Hi! - From Rodrigo the Cobot");
-  delay(1000);
-}
-```
+`connect_and_send_packets` Arduino Sketch
+`tcp_server.py` - Recieves TCP packets
 
 [This example](https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html#wi-fi-sta-example) shows how this library may be used to set up a TCP connection.
 
