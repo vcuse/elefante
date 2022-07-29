@@ -105,8 +105,8 @@ This method uses the Arduino IDE with the built-in [Wifi library](https://www.ar
 _If anything, this method proves that the ESP32 IC chip is working correctly. - Haley_
 
 Steps:
-1. Install the Arduino IDE
-2. Install the M5Core board library
+1. Install the Arduino IDE.
+2. Install the M5Core board library.
 3. Create a new sketch and paste the code below to connect to WiFi.
 4. Burn the sketch to the cobot's Basic.
     * The cobot connects to WiFi as "esp32-67D174"
@@ -115,28 +115,29 @@ Steps:
 #include <WiFi.h>
 
 // Replace with your network credentials (STATION)
-const char* ssid = "wifi_ssid";
-const char* password = "wifi_password";
+const char* ssid = "ssid_here";
+const char* password = "password_here";
+const char* host = "host_ip_here";
 
 void initWiFi() {
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
-  Serial.print("Connecting to WiFi ..");
-  while (WiFi.status() != WL_CONNECTED) {
-    Serial.print('.');
-    delay(1000);
-  }
-  Serial.println(WiFi.localIP());
 }
 
 void setup() {
   Serial.begin(115200);
   initWiFi();
-  Serial.print("RRSI: ");
-  Serial.println(WiFi.RSSI());
 }
 
-void loop() {}
+void loop() 
+{
+  WiFiClient client;
+  const int httpPort = 80;
+  client.connect(host, httpPort);
+
+  client.print("Hi! - From Rodrigo the Cobot");
+  delay(1000);
+}
 ```
 
 [This example](https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html#wi-fi-sta-example) shows how this library may be used to set up a TCP connection.

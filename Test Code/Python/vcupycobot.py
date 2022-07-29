@@ -2,6 +2,8 @@ from pymycobot import MyCobot
 import time
 import traceback
 
+joint_lock_state = [False, False, False, False, False, False]
+
 """
 ### check_cobot_connection()
 - **Description**: Checks if the cobot is "on". If the cobot is not "on", it turns on the cobot.
@@ -49,7 +51,7 @@ def angle_in_position(cobot : MyCobot, joint_id : int, expected_angle : int):
         if len(curr_angles) == 0:
             raise Exception("The current position of the cobot could not be read. Check your cobot's connection.")
     if expected_angle < -180 or expected_angle > 180:
-        raise ValueError("The inputted angle is not within range.")
+        raise ValueError(f"The inputted angle, {expected_angle}, is not within range.")
 
     curr_angle = int(curr_angles[joint_id-1])
 
@@ -200,14 +202,15 @@ def send_angles_smoothly(cobot : MyCobot, start_angles : list, end_angles : list
     each joint line up). 
 - **Parameters**:
     - `cobot : myCobot` - An instance of a MyCobot object corresponding to a cobot connected via serial port.
-    - `speed : int` - The speed at which the cobot will move to reach the origin, from 0 to 100.
+    - (Optional) `speed : int` - The speed at which the cobot will move to reach the origin, from 0 to 100. Defaults to
+        100.
 - **Returns**:
     - N/A
 - **Usage Examples**:
     - `vcupycobot.move_to_origin(100)`
     - `vcupycobot.move_to_origin(50)`
 """
-def move_to_origin(cobot : MyCobot, speed : int):
+def move_to_origin(cobot : MyCobot, speed : int = 100):
     cobot.send_angles([0, 0, 0, 0, 0, 0], speed)
     time.sleep(2)
 
@@ -240,6 +243,94 @@ def compare_angle_lists(angle_list_a : list, angle_list_b : list):
 """
 In Progress
 """
-def setup_connection_vcu_lan():
+
+# Sets up wifi connection
+def setup_wifi_connection( ssid : str = "vsuse", password : str = "vsuse123"):
     return 0
 
+# Moves the cobot to face the LCD
+def face_front(cobot : MyCobot, smooth : bool = False):
+    try:
+        move_to_origin(cobot)
+
+        if smooth:
+            send_angle_smoothly(cobot, 1, 0, -90)
+        else:
+            cobot.send_angle(1, -90, 100)
+    except Exception as err:
+        print("\t", end="")
+        traceback.print_exc()
+        return -1
+
+    return 0
+
+# locks the position of a joint, so that it will not change position until unlocked
+def lock_joint(joint_id : int):
+    if joint_id <= 0 or joint_id >= 7:
+        raise ValueError(f"Joint {joint_id} does not exist.")
+
+    joint_lock_state[joint_id-1] = True
+
+    return 0
+
+# unlocks the position of a joint, so that it will change position until locked
+def unlock_joint(joint_id : int):
+    if joint_id <= 0 or joint_id >= 7:
+        raise ValueError(f"Joint {joint_id} does not exist.")
+
+    joint_lock_state[joint_id - 1] = False
+
+    return 0
+
+# Use instead of the send_angle() method to include joint locking
+def send_angle(cobot : MyCobot, joint_id : int, angle : float, speed : int):
+    if joint_id <= 0 or joint_id >= 7:
+        raise ValueError(f"Joint {joint_id} does not exist.")
+    if angle < -180 or angle > 180:
+        raise ValueError(f"The inputted angle, {angle}, is not within range.")
+    if speed < 0 or speed > 100:
+        raise ValueError(f"The inputted speed, {speed}, is not within range.")
+
+    if not joint_lock_state[joint_id-1]:
+        cobot.send_angle(joint_id, angle, speed)
+        return 0
+    else:
+        return -1
+
+# Use instead of the send_angles() method to include joint locking
+def send_angles(cobot : MyCobot, angles : list, speed : int):
+    if not len(angles) == 6:
+        raise ValueError(angles + " does not contain 6 angles.")
+    if speed < 0 or speed > 100:
+        raise ValueError("The inputted speed is not within range.")
+    for angle in angles:
+        if angle < -180 or angle > 180:
+            raise ValueError(f"The inputted angle, {angle}, is not within range.")
+
+    try:
+        check_cobot_connection(cobot)
+
+        new_angles = []
+        curr_angles = cobot.get_angles()
+        for i in range(6):
+            if joint_lock_state[i]:
+                new_angles.append(curr_angles[i])
+            else:
+                new_angles.append(angles[i])
+
+        cobot.send_angles(new_angles, speed)
+        cobot.set
+        return 0
+    except Exception as err:
+        print("\t", end="")
+        traceback.print_exc()
+        return -1
+
+
+# Controls one LED on the ATOM
+def control_LED(cobot : MyCobot):
+    return 0
+
+# Gradually changes the LED to change to the specified color
+def fade_LED(cobot : MyCobot):
+    return 0
