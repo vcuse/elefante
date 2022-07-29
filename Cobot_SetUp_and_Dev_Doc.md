@@ -107,9 +107,9 @@ _If anything, this method proves that the ESP32 IC chip is working correctly. - 
 Steps:
 1. [Install the Arduino IDE.](https://www.arduino.cc/en/software)
 2. [Install the M5Core board library](https://docs.elephantrobotics.com/docs/gitbook-en/10-ArduinoEnv/10.1-arduino_download.html#3-add-board) and [connect to the cobot via serial port.](https://github.com/vcuse/elefante/blob/main/Cobot_SetUp_and_Dev_Doc.md#connecting-to-the-cobot-via-serial-port)
+    * There is no need to navigate to the "Transponder" page.
 3. Use the [`connect_and_send_packets`](https://github.com/vcuse/elefante/blob/main/Test%20Code/Arduino%20Sketches/connect_and_send_packets/connect_and_send_packets.ino) script to connect to WiFi and start sending TCP packets.
 4. Burn the sketch to the cobot's Basic.
-    * There is no need to navigate to the "Transponder" page.
     * The cobot connects to WiFi as "esp32-67D174"; however, the cobot has no device name in this state. 
     * The network adapter identifies itself as "Espressif Inc.".
     * _I had to use [Wireless Network Watcher](http://www.nirsoft.net/utils/wireless_network_watcher.html) utility to determine the IP address of the cobot. The cobot did not appear through any command line commands. - Haley_
