@@ -105,18 +105,16 @@ This method uses the Arduino IDE with the built-in [Wifi library](https://www.ar
 _If anything, this method proves that the ESP32 IC chip is working correctly. - Haley_
 
 Steps:
-1. Install the Arduino IDE.
-2. Install the M5Core board library.
-3. Use the `connect_and_send_packets` script to connect to WiFi and start sending TCP packets.
+1. [Install the Arduino IDE.](https://www.arduino.cc/en/software)
+2. [Install the M5Core board library.](https://docs.elephantrobotics.com/docs/gitbook-en/10-ArduinoEnv/10.1-arduino_download.html#3-add-board)
+3. Use the [`connect_and_send_packets`](https://github.com/vcuse/elefante/blob/main/Test%20Code/Arduino%20Sketches/connect_and_send_packets/connect_and_send_packets.ino) script to connect to WiFi and start sending TCP packets.
 4. Burn the sketch to the cobot's Basic.
-    * The cobot connects to WiFi as "esp32-67D174"
-    * _I had to use the "Wireless Network Watcher" to determine the IP address of the cobot. The cobot did not appear through any command line commands. - Haley_
-5. Use the `tcp_server.py` script to recieve the packets.
+    * The cobot connects to WiFi as "esp32-67D174"; however, the cobot has no device name in this state. 
+    * The network adapter identifies itself as "Espressif Inc.".
+    * _I had to use [Wireless Network Watcher](http://www.nirsoft.net/utils/wireless_network_watcher.html) utility to determine the IP address of the cobot. The cobot did not appear through any command line commands. - Haley_
+5. Use the [`tcp_server.py`](https://github.com/vcuse/elefante/blob/main/Test%20Code/Python/tcp_server.py) script to recieve the packets.
 
-`connect_and_send_packets` Arduino Sketch
-`tcp_server.py` - Recieves TCP packets
-
-[This example](https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html#wi-fi-sta-example) shows how this library may be used to set up a TCP connection.
+[This example](https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html#wi-fi-sta-example) shows how the Arduino WiFi library may be used to set up a TCP connection.
 
 #### Connecting to WiFi using Elephant Robotic's APIs
 
