@@ -1,4 +1,4 @@
-# vcupycobot - VCU SE Lab's MyCobot Module
+# `vcupycobot` - VCU SE Lab's MyCobot Module
 
 This module contains helpful functions that build off of the original `pymycobot` model provided by Elephant Robotics. The goal of these functions is to make the cobot easier to program, and to provide helpful developer functionality that is missing from the original module.
 
