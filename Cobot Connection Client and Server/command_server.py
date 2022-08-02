@@ -40,11 +40,12 @@ while True:
 
                 # Convert data to commands and sends commands to cobot
                 command = data[0:4]
-                joint_id = b""
-                angles = b""
+                joint_id = -1
+                angles = 0
 
                 if command == b"000":
                     speed = int(data[4:], 2)
+                    print("Changed the Movement Speed to", speed)
                     break
                 elif command == b"001":
                     joint_id = int(data[3:6], 2)
@@ -54,6 +55,7 @@ while True:
                     if sign_bit:
                         angles = -angles
 
+                    print(f"Moving Joint {joint_id} to angle {angles}")
                     mc.send_angle(joint_id, angles, speed)
                     time.sleep(command_delay)
                     break
@@ -72,6 +74,7 @@ while True:
                         angle_data.append(dec_val)
                         angles = angles[9:]
 
+                    print(f"Moving joints to to angles {angle_data}")
                     mc.send_angles(angle_data, speed)
                     time.sleep(command_delay)
                     break
