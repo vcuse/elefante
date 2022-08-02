@@ -44,4 +44,4 @@
 
 This module contains helpful functions that build off of the original `pymycobot` module provided by Elephant Robotics. The goal of these functions is to make the cobot easier to program, and to provide helpful developer functionality that is missing from the original module.
 
-[Read the `vcupycobot` API](https://github.com/vcuse/elefante/blob/main/Test%20Code/Python/vcupycobot_api.md)
+[Read the `vcupycobot` API](https://github.com/vcuse/elefante/tree/main/vcupycobot)
