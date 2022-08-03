@@ -15,7 +15,7 @@ ip = "192.168.0.11"
 port = 80
 sock = socket.socket()
 
-def process_data(data):
+def process_data(data : bytes, cobot : MyCobot):
     global speed
 
     if data:
@@ -23,6 +23,7 @@ def process_data(data):
         command = data[0:3]
         joint_id = -1
         angles = 0
+        sign_bit = b""
 
         if command == b"000":
             speed = int(data[3:], 2)
@@ -31,12 +32,12 @@ def process_data(data):
             joint_id = int(data[3:6], 2)
             angles = int(data[7:], 2)
 
-            sign_bit = int(data[6])
+            sign_bit = int(chr(data[6]))
             if sign_bit == 1:
                 angles = -angles
 
             print(f"Moving Joint {joint_id} to angle {angles}")
-            mc.send_angle(joint_id, angles, speed)
+            cobot.send_angle(joint_id, angles, speed)
             time.sleep(command_delay)
         elif command == b"010":
             angles = data[3:]
@@ -46,7 +47,7 @@ def process_data(data):
                 angle = angles[0:9]
                 dec_val = int(angle[1:], 2)
 
-                sign_bit = int(angle[0])
+                sign_bit = int(chr(angle[0]))
                 if sign_bit == 1:
                     dec_val = -dec_val
 
@@ -54,13 +55,17 @@ def process_data(data):
                 angles = angles[9:]
 
             print(f"Moving joints to to angles {angle_data}")
-            mc.send_angles(angle_data, speed)
+            cobot.send_angles(angle_data, speed)
             time.sleep(command_delay)
 
 ### CODE ###
 
-mc = MyCobot("COM3", 115)
+mc = MyCobot('COM3', 115200)
 #vcupycobot.check_cobot_connection(mc)
+print("Powering on the cobot...")
+mc.power_on()
+time.sleep(5)
+print("Moving the cobot to origin...")
 vcupycobot.move_to_origin(mc, 100)
 time.sleep(2)
 
@@ -82,7 +87,7 @@ while True:
 
 # Bind the socket to the port
 server_address = (ip, port)
-print(f'Starting on {server_address} port {port}')
+print(f'Starting on {ip} port {port}.')
 try:
     sock.bind(server_address)
 except OSError:
@@ -128,7 +133,7 @@ while True:
                     for line in buffer:
                         start_index += len(line)
 
-                    process_data(data)
+                    process_data(data, mc)
 
                     if start_index:
                         buffer.seek(start_index)
@@ -145,4 +150,6 @@ while True:
     finally:
         # Clean up the connection
         connection.close()
+
+mc.power_off()
 
