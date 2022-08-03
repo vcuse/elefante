@@ -48,3 +48,6 @@ The connection server is a TCP server that interprets the TCP messages sent to i
 1. A command is recieved via TCP packets.
 2. The command is decoded into a corresponding function in the `pymycobot` module and its associated parameters. 
 3. The function is then executed on the connected cobot.
+
+Message buffer inspired by:
+- https://stackoverflow.com/questions/29023885/python-socket-readline-without-socket-makefile
