@@ -2,9 +2,10 @@ import socket
 import sys
 import traceback
 
-import keyboard
+#import keyboard
 
-server_ip = "192.168.73.48"
+#server_ip = "192.168.73.48"
+server_ip = "192.168.0.11"
 port = 80
 
 menu_text = "Select From the Options Below to Send Commands to the Cobot.\n" \
@@ -32,7 +33,7 @@ try:
                     out_command += "000"
 
                     while True:
-                        ans = input("\tEnter the Cobot's new movement speed (0 - 100):")
+                        ans = input("\tEnter the Cobot's new movement speed (0 - 100): ")
 
                         if ans.isnumeric():
                             ans = int(ans)
@@ -43,16 +44,16 @@ try:
                                 while not len(bin_out) == 8:
                                     bin_out = "0" + bin_out
 
-                                out_command += bin_out
+                                out_command += bin_out + "\n"
                                 break
                             else:
                                 print("\tPlease enter an integer from 0 to 100.")
                         else:
                             print("\tPlease enter an integer from 0 to 100.")
 
-                    s.sendall(out_command)
+                    s.sendall(out_command.encode('utf-8'))
                 elif int(ans) == 1:
-                    out_command += "001 "
+                    out_command += "001"
 
                     while True:
                         ans = input("\tEnter the ID number of the joint you would like to move (1 - 6): ")
@@ -83,6 +84,7 @@ try:
 
                         if ans_check.isnumeric():
                             ans = int(ans)
+
                             if -180 <= ans < 0:
                                 out_command += "1"
                                 bin_out = bin(abs(ans)).replace("0b", "")
@@ -90,7 +92,7 @@ try:
                                 while not len(bin_out) == 8:
                                     bin_out = "0" + bin_out
 
-                                out_command += bin_out
+                                out_command += bin_out + "\n"
                                 break
                             elif 0 <= ans <= 180:
                                 out_command += "0"
@@ -99,14 +101,14 @@ try:
                                 while not len(bin_out) == 8:
                                     bin_out = "0" + bin_out
 
-                                out_command += bin_out
+                                out_command += bin_out + "\n"
                                 break
                             else:
                                 print("\tPlease enter a number from -180 to 180.")
                         else:
                             print("\tPlease enter a number from -180 to 180.")
 
-                    s.sendall(out_command)
+                    s.sendall(out_command.encode('utf-8'))
 
                 elif int(ans) == 2:
                     out_command += "010"
@@ -152,7 +154,8 @@ try:
                     for angle in bin_angles:
                         out_command += angle
 
-                    s.sendall(out_command)
+                    out_command += "\n"
+                    s.sendall(out_command.encode('utf-8'))
                 else:
                     print("That command is currently under construction! Please try again.")
 
