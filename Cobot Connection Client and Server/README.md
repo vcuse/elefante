@@ -10,6 +10,7 @@ The server command design was inspired by CPU command design.
 - The first 3 bits of the command make up the command code, and correspond to some command on the cobot. 
 - The rest of the bits are the parameters of that command.
 
+
 | Command | Command Code |  Speed | Joint ID | Angle | Angles | Coordinate | Coordinates
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Set Movement Speed | 000 | Bits 3 through 10 | N/A | N/A | N/A | N/A | N/A |
@@ -20,6 +21,14 @@ The server command design was inspired by CPU command design.
 | Unreserved | 101 | N/A | N/A | N/A | N/A | N/A | N/A |
 | Unreserved | 110 | N/A | N/A | N/A | N/A | N/A | N/A |
 | Unreserved | 111 | N/A | N/A | N/A | N/A | N/A | N/A |
+
+Example Commands:
+- `00000000000`
+    - Sets the speed to 0
+- `001001000000000`
+    - Moves Joint 1 to angle 0
+- `001011110110100`
+    - Sends Joint 3 to angle -180
 
 ### Speed
 
