@@ -38,7 +38,9 @@ Angles are converted from their decimal values into 9-bit binary numbers. A sign
 
 ## `connection_client.py`
 
-This client was created to provide a user-friendly interface for the server connection. The server can accept commands without this interface.
+This client was created to provide a user-friendly interface for the server connection. It can be configured to send TCP or UDP packets.
+
+The server can accept commands without this interface.
 
 ## `connection_server.py`
 
