@@ -1,4 +1,5 @@
 import socket
+import sys
 import traceback
 from io import BytesIO
 
@@ -12,6 +13,7 @@ command_delay = 2 #seconds
 command_history = []
 ip = "192.168.0.11"
 port = 80
+sock = socket.socket()
 
 def process_data(data):
     global speed
@@ -59,36 +61,60 @@ def process_data(data):
 
 mc = MyCobot("COM3", 115)
 #vcupycobot.check_cobot_connection(mc)
-vcupycobot.move_to_origin(mc,100)
+vcupycobot.move_to_origin(mc, 100)
 time.sleep(2)
 
-# Create a TCP/IP socket
-sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# Choose between TCP or UDP packets
+while True:
+    print("Select Your Communication Type:\n1) TCP\n2) UDP\n")
+    ans = input("Communication Type: ")
+
+    if ans == "1":
+        # Create a TCP/IP socket
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        break
+    elif ans == "2":
+        # Create a UDP socket
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        break
+    else:
+        print("Invalid Option. Please Try Again.")
 
 # Bind the socket to the port
 server_address = (ip, port)
-print(f'starting up on {server_address} port {port}')
-sock.bind(server_address)
+print(f'Starting on {server_address} port {port}')
+try:
+    sock.bind(server_address)
+except OSError:
+    print("The server could not start with the inputted IP address. Check your computer's network connection.")
+    traceback.print_exc()
+    sys.exit()
 
-# Listen for incoming connections
-sock.listen(1)
+# If the socket is a TCP socket...
+if sock.type == socket.SOCK_STREAM:
+    # Listen for incoming connections
+    sock.listen(1)
 
 while True:
-    # Wait for a connection
-    print('waiting for a connection')
-    (connection, client_address) = sock.accept()
+    if sock.type == socket.SOCK_STREAM:
+        # Wait for a connection
+        print('Waiting for a connection...')
+        (connection, client_address) = sock.accept()
+        print('Connection from', client_address, "\n")
 
     try:
-        print('connection from', client_address)
-
-        # Receive the data and send it to the cobot
+        # Receive the data, decodes it, and send the corresponding command to the cobot
         with BytesIO() as buffer:
 
             while True:
-                #data = connection.recv(57)
+
+                resp = b""
 
                 try:
-                    resp = connection.recv(100)  # Read in some number of bytes; 57 should be enough
+                    if sock.type == socket.SOCK_STREAM:
+                        resp = connection.recv(100)  # Read messages from connected client
+                    elif sock.type == socket.SOCK_DGRAM:
+                        resp = sock.recv(100)
                 except ConnectionResetError:
                     break
                 else:
@@ -104,14 +130,6 @@ while True:
 
                     process_data(data)
 
-                    """ If we received any newline-terminated lines, this will be nonzero.
-                        In that case, we read the remaining bytes into memory, truncate
-                        the BytesIO object, reset the file pointer and re-write the
-                        remaining bytes back into it.  This will advance the file pointer
-                        appropriately.  If start_index is zero, the buffer doesn't contain
-                        any newline-terminated lines, so we set the file pointer to the
-                        end of the file to not overwrite bytes.
-                    """
                     if start_index:
                         buffer.seek(start_index)
                         remaining = buffer.read()
@@ -127,3 +145,4 @@ while True:
     finally:
         # Clean up the connection
         connection.close()
+

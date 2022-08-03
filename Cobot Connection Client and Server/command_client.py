@@ -17,6 +17,7 @@ menu_text = "Select From the Options Below to Send Commands to the Cobot.\n" \
 
 print("Welcome to the Cobot Command Server Client!\n Attempting to connect to the server now...")
 try:
+    # Change the aocket type below to socket.SOCK_DGRAM for UDP packets
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((server_ip, port))
         print("\tConnected!\n")
