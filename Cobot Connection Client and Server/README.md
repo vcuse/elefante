@@ -42,10 +42,10 @@ This client was created to provide a user-friendly interface for the server conn
 
 ## `connection_server.py`
 
-The connection server is a TCP server that interprets the TCP messages sent to it based on the command structure detailed above. 
+The connection server is a TCP or UDP server that interprets the TCP messages sent to it based on the command structure detailed above. 
 
 #### Execution Steps:
-1. A command is recieved via TCP packets.
+1. A command is recieved via TCP/UDP packets.
 2. The command is decoded into a corresponding function in the `pymycobot` module and its associated parameters. 
 3. The function is then executed on the connected cobot.
 
