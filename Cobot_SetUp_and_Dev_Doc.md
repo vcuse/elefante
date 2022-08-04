@@ -143,7 +143,7 @@ mc.power_off()
 
 * To check if the network is set up properly, replace the function call `mc.set_ssid_pwd()` with `mc.get_ssid_pwd()`.
 
-##### Connecting to WiFI:
+##### Connecting to WiFI _(Section Under Review)_:
 1. On the "Transponder" screen, select "WLAN Server".
 2. The cobot should now attempt to connect to your choosen WiFi.
     * If you have successfully setup the cobot's network connection, you should see your wifi's SSID at the top of the screen.
