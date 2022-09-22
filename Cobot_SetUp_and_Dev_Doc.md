@@ -156,7 +156,7 @@ _Note: The instructions below only describe how to connect to WiFi using Python3
 
 [Instructions on how to connect to the cobot wirelessly via TCP/IP](https://docs.elephantrobotics.com/docs/gitbook-en/7-ApplicationBasePython/7.6_TCPIP.html)
 
-_ There are functions built into `pymycobot` (the Python module) to set up the cobot's wifi connect; however, there is no documentation on them. When testing, it is inconclusive whether the functions are actually configuring the network connection for continuous use. I have reached out to support to ask about this. Wish me luck! - Haley _
+_There are functions built into `pymycobot` (the Python module) to set up the cobot's wifi connect; however, there is no documentation on them. When testing, it is inconclusive whether the functions are actually configuring the network connection for continuous use. - Haley_
 
 ### Running on Bluetooth:
 
