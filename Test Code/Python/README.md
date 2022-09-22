@@ -1,7 +1,5 @@
 # VCU SE LAB - Python Files
 
-Author: Haley Currence
-
 ### `basic_lead_through.py`
 
 - **Description**: Allows the user to record the position of the cobot after manual manipulation.
