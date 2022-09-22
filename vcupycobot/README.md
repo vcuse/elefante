@@ -10,6 +10,8 @@ This module contains helpful functions that build off of the original `pymycobot
 - **Usage Examples**:
     - Usage Examples Here
 
+Author: Haley Currence
+
 ---
 
 ### check_cobot_connection()
