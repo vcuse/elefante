@@ -4,6 +4,8 @@ The goal of these scripts is to create a way around the wifi connection problems
 
 The connection server runs on the device connected to the cobot via serial port, and the client server runs on the device trying to reach the server over wifi. 
 
+Author: Haley Currence
+
 ### Command Structure/Design
 
 The server command design was inspired by CPU command design. 
